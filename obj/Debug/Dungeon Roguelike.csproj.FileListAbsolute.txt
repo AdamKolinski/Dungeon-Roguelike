@@ -1,0 +1,25 @@
+C:\MonoGame Workspace\Dungeon Roguelike\Dungeon Roguelike\bin\DesktopGL\AnyCPU\Debug\MonoGame.Framework.dll.config
+C:\MonoGame Workspace\Dungeon Roguelike\Dungeon Roguelike\bin\DesktopGL\AnyCPU\Debug\x86\SDL2.dll
+C:\MonoGame Workspace\Dungeon Roguelike\Dungeon Roguelike\bin\DesktopGL\AnyCPU\Debug\x64\SDL2.dll
+C:\MonoGame Workspace\Dungeon Roguelike\Dungeon Roguelike\bin\DesktopGL\AnyCPU\Debug\x86\soft_oal.dll
+C:\MonoGame Workspace\Dungeon Roguelike\Dungeon Roguelike\bin\DesktopGL\AnyCPU\Debug\x64\soft_oal.dll
+C:\MonoGame Workspace\Dungeon Roguelike\Dungeon Roguelike\bin\DesktopGL\AnyCPU\Debug\x86\libSDL2-2.0.so.0
+C:\MonoGame Workspace\Dungeon Roguelike\Dungeon Roguelike\bin\DesktopGL\AnyCPU\Debug\x64\libSDL2-2.0.so.0
+C:\MonoGame Workspace\Dungeon Roguelike\Dungeon Roguelike\bin\DesktopGL\AnyCPU\Debug\x86\libopenal.so.1
+C:\MonoGame Workspace\Dungeon Roguelike\Dungeon Roguelike\bin\DesktopGL\AnyCPU\Debug\x64\libopenal.so.1
+C:\MonoGame Workspace\Dungeon Roguelike\Dungeon Roguelike\bin\DesktopGL\AnyCPU\Debug\libSDL2-2.0.0.dylib
+C:\MonoGame Workspace\Dungeon Roguelike\Dungeon Roguelike\bin\DesktopGL\AnyCPU\Debug\libopenal.1.dylib
+C:\MonoGame Workspace\Dungeon Roguelike\Dungeon Roguelike\bin\DesktopGL\AnyCPU\Debug\Dungeon Roguelike.exe
+C:\MonoGame Workspace\Dungeon Roguelike\Dungeon Roguelike\bin\DesktopGL\AnyCPU\Debug\Dungeon Roguelike.pdb
+C:\MonoGame Workspace\Dungeon Roguelike\Dungeon Roguelike\bin\DesktopGL\AnyCPU\Debug\MonoGame.Framework.dll
+C:\MonoGame Workspace\Dungeon Roguelike\Dungeon Roguelike\obj\Debug\Dungeon Roguelike.csprojAssemblyReference.cache
+C:\MonoGame Workspace\Dungeon Roguelike\Dungeon Roguelike\obj\Debug\Dungeon Roguelike.csproj.CopyComplete
+C:\MonoGame Workspace\Dungeon Roguelike\Dungeon Roguelike\obj\Debug\Dungeon Roguelike.exe
+C:\MonoGame Workspace\Dungeon Roguelike\Dungeon Roguelike\obj\Debug\Dungeon Roguelike.pdb
+C:\MonoGame Workspace\Dungeon Roguelike\Dungeon Roguelike\bin\DesktopGL\AnyCPU\Debug\Newtonsoft.Json.dll
+C:\MonoGame Workspace\Dungeon Roguelike\Dungeon Roguelike\bin\DesktopGL\AnyCPU\Debug\Newtonsoft.Json.xml
+C:\MonoGame Workspace\Dungeon Roguelike\Dungeon Roguelike\bin\DesktopGL\AnyCPU\Debug\Content\characters.xnb
+C:\MonoGame Workspace\Dungeon Roguelike\Dungeon Roguelike\bin\DesktopGL\AnyCPU\Debug\Content\Test.json
+C:\MonoGame Workspace\Dungeon Roguelike\Dungeon Roguelike\bin\DesktopGL\AnyCPU\Debug\Content\tileset.xnb
+C:\MonoGame Workspace\Dungeon Roguelike\Dungeon Roguelike\bin\DesktopGL\AnyCPU\Debug\icon.ico
+C:\MonoGame Workspace\Dungeon Roguelike\Dungeon Roguelike\bin\DesktopGL\AnyCPU\Debug\icon.bmp

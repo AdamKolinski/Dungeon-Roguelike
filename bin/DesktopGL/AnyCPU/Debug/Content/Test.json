@@ -1,0 +1,26 @@
+﻿{
+  "Tiles": [
+    {
+      "ID": 1,
+      "HasCollision": false,
+      "TextureID": 0
+    },
+    {
+      "ID": 2,
+      "HasCollision": true,
+      "TextureID": 1
+    }
+  ],
+  "Map":
+    {
+      "ID": 1,
+      "Name": "Test Map",
+      "Size": "5, 5",
+      "MapTiles": [
+        0, 0, 0, 0, 0,
+        0, 1, 1, 1, 0,
+        0, 1, 2, 1, 0,
+        0, 1, 1, 1, 0,
+        0, 0, 0, 0, 0 ]
+    }
+}
