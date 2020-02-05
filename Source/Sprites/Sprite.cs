@@ -7,36 +7,36 @@ namespace Dungeon_Roguelike.Source.Sprites
     {
         protected SpriteEffects s = SpriteEffects.FlipHorizontally;
         protected Texture2D _texture;
-        protected Vector2 _position, _scale;
-        protected SpriteBatch _spriteBatch;
+        public Vector2 Position { get; set; }
+        public Vector2 Scale { get; }
         public Rectangle Rect;
+
+        public Texture2D Texture => _texture;
 
         public void Move(Vector2 translation)
         {
-            _position += new Vector2((int)translation.X, (int)translation.Y);
+            Position += new Vector2((int)translation.X, (int)translation.Y);
             Rect.Location += translation.ToPoint();
         }
 
-        public Sprite(SpriteBatch spriteBatch, Texture2D texture, Vector2 position)
+        public Sprite(Texture2D texture, Vector2 position)
         {
-            _spriteBatch = spriteBatch;
             _texture = texture;
-            _position = position;
-            _scale = Vector2.One;
+            Position = position;
+            Scale = Vector2.One;
         }
 
-        public Sprite(SpriteBatch spriteBatch, Texture2D texture, Vector2 position, Vector2 scale)
+        public Sprite(Texture2D texture, Vector2 position, Vector2 scale)
         {
-            _spriteBatch = spriteBatch;
             _texture = texture;
-            _position = position;
-            _scale = scale;
+            Position = position;
+            Scale = scale;
             //Texture2D e = new Texture2D();
         }
 
         protected virtual void Initialize()
         {
-            Rect = new Rectangle(_position.ToPoint(), _texture.Bounds.Size * _scale.ToPoint());
+            Rect = new Rectangle(Position.ToPoint(), _texture.Bounds.Size * Scale.ToPoint());
         }
 
         public virtual void Update(GameTime gameTime)
@@ -44,9 +44,9 @@ namespace Dungeon_Roguelike.Source.Sprites
             
         }
         
-        public virtual void Draw()
+        public virtual void Draw(SpriteBatch spriteBatch)
         {
-            _spriteBatch.Draw(_texture, new Rectangle((int)_position.X, (int)_position.Y, (int)(_texture.Width*_scale.X), (int)(_texture.Height*_scale.Y)), Color.White);
+            spriteBatch.Draw(_texture, new Rectangle((int)Position.X, (int)Position.Y, (int)(_texture.Width*Scale.X), (int)(_texture.Height*Scale.Y)), Color.White);
             
         }
     }

@@ -5,7 +5,6 @@ namespace Dungeon_Roguelike.Source.Sprites
 {
     public class TiledSprite : Sprite
     {
-        protected float _tileWidth, _tileHeight;
         protected bool _multiTiled;
         public int[,] TileIndexes { get; set; }
 
@@ -15,7 +14,10 @@ namespace Dungeon_Roguelike.Source.Sprites
 
         public int Columns { get; set; }
 
-        public TiledSprite(SpriteBatch spriteBatch, Texture2D texture, Vector2 position, int rows, int columns, int tileIndex) : base(spriteBatch, texture, position)
+        public float TileWidth { get; protected set; }
+        public float TileHeight { get; protected set; }
+
+        public TiledSprite(Texture2D texture, Vector2 position, int rows, int columns, int tileIndex) : base(texture, position)
         {
             Rows = rows;
             Columns = columns;
@@ -24,7 +26,7 @@ namespace Dungeon_Roguelike.Source.Sprites
             Initialize();
         }
 
-        public TiledSprite(SpriteBatch spriteBatch, Texture2D texture, Vector2 position, Vector2 scale, int columns, int rows, int tileIndex) : base(spriteBatch, texture, position, scale)
+        public TiledSprite(Texture2D texture, Vector2 position, Vector2 scale, int columns, int rows, int tileIndex) : base(texture, position, scale)
         {
             Rows = rows;
             Columns = columns;
@@ -33,7 +35,7 @@ namespace Dungeon_Roguelike.Source.Sprites
             Initialize();
         }
         
-        public TiledSprite(SpriteBatch spriteBatch, Texture2D texture, Vector2 position, int rows, int columns, int[,] tileIndexes) : base(spriteBatch, texture, position)
+        public TiledSprite(Texture2D texture, Vector2 position, int rows, int columns, int[,] tileIndexes) : base(texture, position)
         {
             Rows = rows;
             Columns = columns;
@@ -42,7 +44,7 @@ namespace Dungeon_Roguelike.Source.Sprites
             Initialize();
         }
 
-        public TiledSprite(SpriteBatch spriteBatch, Texture2D texture, Vector2 position, Vector2 scale, int columns, int rows, int[,] tileIndexes) : base(spriteBatch, texture, position, scale)
+        public TiledSprite(Texture2D texture, Vector2 position, Vector2 scale, int columns, int rows, int[,] tileIndexes) : base(texture, position, scale)
         {
             Rows = rows;
             Columns = columns;
@@ -53,15 +55,15 @@ namespace Dungeon_Roguelike.Source.Sprites
 
         protected override void Initialize()
         {
-            _tileWidth = _texture.Width * _scale.X / Columns;
-            _tileHeight = _texture.Height * _scale.Y / Rows;
-            Rect = new Rectangle(_position.ToPoint(), new Point((int)_tileWidth, (int)_tileHeight));
+            TileWidth = _texture.Width * Scale.X / Columns;
+            TileHeight = _texture.Height * Scale.Y / Rows;
+            Rect = new Rectangle(Position.ToPoint(), new Point((int)TileWidth, (int)TileHeight));
         }
 
-        public override void Draw()
+        public override void Draw(SpriteBatch spriteBatch)
         {
             if(!_multiTiled)
-                _spriteBatch.Draw(_texture, new Rectangle((int)_position.X, (int)_position.Y, (int)_tileWidth, (int)_tileHeight), new Rectangle((int)(_tileWidth/_scale.X * (TileIndex % Columns)), y: (int)(_tileHeight/_scale.Y *(TileIndex / Columns)), width: (int)(_tileWidth/_scale.X), height: (int)(_tileHeight/_scale.Y)),  Color.White, 0, Vector2.Zero,  s, 0);
+                spriteBatch.Draw(_texture, new Rectangle((int)Position.X, (int)Position.Y, (int)TileWidth, (int)TileHeight), new Rectangle((int)(TileWidth/Scale.X * (TileIndex % Columns)), y: (int)(TileHeight/Scale.Y *(TileIndex / Columns)), width: (int)(TileWidth/Scale.X), height: (int)(TileHeight/Scale.Y)),  Color.White, 0, Vector2.Zero,  s, 0);
 
             if (_multiTiled)
             {
@@ -69,10 +71,10 @@ namespace Dungeon_Roguelike.Source.Sprites
                 {
                     for (int x = 0; x < TileIndexes.GetLength(1); x++)
                     {
-                        Rectangle destinationRect = new Rectangle((int) _position.X + x * (int) _tileWidth, (int) _position.Y + y * (int) _tileHeight, (int)_tileWidth, (int) _tileHeight);
-                        Rectangle sourceRect = new Rectangle((int)(_tileWidth/_scale.X * (TileIndexes[y, x] % Columns)), y: (int)(_tileHeight/_scale.Y * (TileIndexes[y, x] / Columns)), width: (int)(_tileWidth/_scale.X), height: (int)(_tileHeight/_scale.Y));
+                        Rectangle destinationRect = new Rectangle((int) Position.X + x * (int) TileWidth, (int) Position.Y + y * (int) TileHeight, (int)TileWidth, (int) TileHeight);
+                        Rectangle sourceRect = new Rectangle((int)(TileWidth/Scale.X * (TileIndexes[y, x] % Columns)), y: (int)(TileHeight/Scale.Y * (TileIndexes[y, x] / Columns)), width: (int)(TileWidth/Scale.X), height: (int)(TileHeight/Scale.Y));
                         
-                        _spriteBatch.Draw(_texture, destinationRect , sourceRect,  Color.White);
+                        spriteBatch.Draw(_texture, destinationRect , sourceRect,  Color.White);
                     }
                 }
             }

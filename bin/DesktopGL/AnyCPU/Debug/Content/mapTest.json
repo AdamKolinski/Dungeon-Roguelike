@@ -1,0 +1,47 @@
+{
+	"SceneIndex":0,
+	"Tiles": [
+		{
+			"ID": 0,
+			"HasCollision":true,
+			"TextureName":"tileset",
+			"TileIndex": 0
+		},
+		{
+			"ID": 1,
+			"HasCollision":true,
+			"TextureName":"tileset",
+			"TileIndex": 33
+		},
+		{	
+			"ID": 2,
+			"HasCollision":true,
+			"TextureName":"tileset",
+			"TileIndex": 38
+		},
+		{
+			"ID": 3,
+			"HasCollision":true,
+			"TextureName":"tileset",
+			"TileIndex": 70
+		},
+		{
+			"ID": 4,
+			"HasCollision":true,
+			"TextureName":"tileset",
+			"TileIndex": 131
+		},
+	],
+	"Map":
+		{
+			"Name":"Dupa",
+			"Size":"5, 5",
+			"MapTiles":	[	
+				4,  4,  4,  4, 4,
+				1, 1, 2, 1,1,
+				4,4,3,4,4,
+				4,  4,  4,  4, 4,
+				4,  4,  4,  4, 4
+			]
+		}
+}

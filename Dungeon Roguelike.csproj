@@ -7,7 +7,7 @@
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{24885921-51B2-4F73-B392-D013E238B8A4}</ProjectGuid>
-    <OutputType>WinExe</OutputType>
+    <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Dungeon_Roguelike</RootNamespace>
     <AssemblyName>Dungeon Roguelike</AssemblyName>
@@ -51,17 +51,21 @@
     <Compile Include="Source\IDestructible.cs" />
     <Compile Include="Source\InputSystem\Axis.cs" />
     <Compile Include="Source\InputSystem\Input.cs" />
-    <Compile Include="Source\Scene\Map.cs" />
-    <Compile Include="Source\Scene\Scene.cs" />
-    <Compile Include="Source\Scene\SceneManager.cs" />
+    <Compile Include="Source\SceneManagement\Map.cs" />
+    <Compile Include="Source\SceneManagement\FileScene.cs" />
+    <Compile Include="Source\SceneManagement\Scene.cs" />
+    <Compile Include="Source\SceneManagement\SceneManager.cs" />
     <Compile Include="Source\Mathf.cs" />
     <Compile Include="Source\Physics.cs" />
     <Compile Include="Source\Player.cs" />
     <Compile Include="Source\Program.cs" />
-    <Compile Include="Source\Scene\Tile.cs" />
+    <Compile Include="Source\Scenes\LevelEditor.cs" />
     <Compile Include="Source\Sprites\BreakableSprite.cs" />
     <Compile Include="Source\Sprites\Sprite.cs" />
     <Compile Include="Source\Sprites\TiledSprite.cs" />
+    <Compile Include="Source\TilesetSystem\Tile.cs" />
+    <Compile Include="Source\TilesetSystem\Tileset.cs" />
+    <Compile Include="Source\TilesetSystem\TilesetsManager.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="MonoGame.Framework">

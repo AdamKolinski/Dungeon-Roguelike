@@ -7,6 +7,7 @@ namespace Dungeon_Roguelike.Source.InputSystem
     {
         private static readonly List<Axis> Axes = new List<Axis>();
         private static KeyboardState _currentKeyboardState, _previousKeyboardState;
+        private static MouseState _currentMouseState, _previousMouseState;
 
         public static void Initialize()
         {
@@ -29,6 +30,24 @@ namespace Dungeon_Roguelike.Source.InputSystem
         {
             return _currentKeyboardState.IsKeyDown(key) && !_previousKeyboardState.IsKeyDown(key);
         }
+
+        public static bool IsMouseKeyDown(int button)
+        {
+            bool toReturn = false;
+            switch (button)
+            {
+                case 0:
+                    toReturn = _currentMouseState.LeftButton == ButtonState.Pressed &&
+                        _previousMouseState.LeftButton != ButtonState.Pressed;
+                    break;
+                case 1:
+                    toReturn = _currentMouseState.RightButton == ButtonState.Pressed &&
+                               _previousMouseState.RightButton != ButtonState.Pressed;
+                    break;
+            }
+
+            return toReturn;
+        }
         public static void Update()
         {
             GetState();
@@ -45,6 +64,9 @@ namespace Dungeon_Roguelike.Source.InputSystem
         {
             _previousKeyboardState = _currentKeyboardState;
             _currentKeyboardState = Keyboard.GetState();
+
+            _previousMouseState = _currentMouseState;
+            _currentMouseState = Mouse.GetState();
         }
         
     }

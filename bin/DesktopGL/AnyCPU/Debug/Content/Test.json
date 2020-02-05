@@ -1,26 +1,32 @@
 ﻿{
+  "SceneIndex": 0,
   "Tiles": [
+    {
+      "ID": 0,
+      "HasCollision": false,
+      "TextureName": "",
+      "TileIndex": 0
+    },
     {
       "ID": 1,
       "HasCollision": false,
-      "TextureID": 0
+      "TextureName": "tileset",
+      "TileIndex": 4
     },
     {
       "ID": 2,
       "HasCollision": true,
-      "TextureID": 1
+      "TextureName": "tileset",
+      "TileIndex": 36
     }
   ],
   "Map":
     {
-      "ID": 1,
       "Name": "Test Map",
-      "Size": "5, 5",
+      "Size": "5, 2",
       "MapTiles": [
-        0, 0, 0, 0, 0,
-        0, 1, 1, 1, 0,
-        0, 1, 2, 1, 0,
-        0, 1, 1, 1, 0,
-        0, 0, 0, 0, 0 ]
+        1, 2, 1, 2, 1, 
+        2, 1, 2, 1, 2
+      ]
     }
 }
