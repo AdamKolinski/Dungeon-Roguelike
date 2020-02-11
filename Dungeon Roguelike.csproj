@@ -51,14 +51,14 @@
     <Compile Include="Source\IDestructible.cs" />
     <Compile Include="Source\InputSystem\Axis.cs" />
     <Compile Include="Source\InputSystem\Input.cs" />
-    <Compile Include="Source\Scene\Map.cs" />
+    <Compile Include="Source\Scene\Tilemap.cs" />
     <Compile Include="Source\Scene\Scene.cs" />
     <Compile Include="Source\Scene\SceneManager.cs" />
     <Compile Include="Source\Mathf.cs" />
     <Compile Include="Source\Physics.cs" />
     <Compile Include="Source\Player.cs" />
     <Compile Include="Source\Program.cs" />
-    <Compile Include="Source\Scene\Tile.cs" />
+    <Compile Include="Source\Scene\TilePaletteItem.cs" />
     <Compile Include="Source\Sprites\BreakableSprite.cs" />
     <Compile Include="Source\Sprites\Sprite.cs" />
     <Compile Include="Source\Sprites\TiledSprite.cs" />

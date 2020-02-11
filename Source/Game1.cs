@@ -39,7 +39,7 @@ namespace Dungeon_Roguelike.Source
 
             string tmp = File.ReadAllText("./Content/Test.json");
             _scene = JsonConvert.DeserializeObject<Scene.Scene>(tmp);
-            Console.WriteLine(_scene.Map.MapTiles[6]);
+            Console.WriteLine(_scene.Tilemap.Tileset[6]);
             
             Input.Initialize();
             base.Initialize();

@@ -1,8 +1,16 @@
-﻿namespace Dungeon_Roguelike.Source.Scene
+﻿using Microsoft.Xna.Framework.Graphics;
+
+namespace Dungeon_Roguelike.Source.Scene
 {
     public class Scene
     {
-        public Tile[] Tiles;
-        public Map Map;
+        public Tilemap Tilemap;
+
+
+        
+        public void Draw(SpriteBatch spriteBatch)
+        {
+            
+        }
     }
 }

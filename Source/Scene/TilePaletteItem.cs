@@ -1,6 +1,6 @@
 ﻿namespace Dungeon_Roguelike.Source.Scene
 {
-    public struct Tile
+    public struct TilePaletteItem
     {
         public int ID { get; set; }
         public bool HasCollision { get; set; }
