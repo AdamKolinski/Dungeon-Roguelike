@@ -1,4 +1,4 @@
-﻿namespace Dungeon_Roguelike.Source.Map
+﻿namespace Dungeon_Roguelike.Source.SceneManagement
 {
     public class SceneManager
     {

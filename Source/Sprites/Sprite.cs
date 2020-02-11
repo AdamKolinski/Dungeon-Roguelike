@@ -8,8 +8,12 @@ namespace Dungeon_Roguelike.Source.Sprites
         protected SpriteEffects s = SpriteEffects.FlipHorizontally;
         protected Texture2D _texture;
         protected Vector2 _position, _scale;
-        protected SpriteBatch _spriteBatch;
         public Rectangle Rect;
+
+        public Texture2D Texture => _texture;
+        public Vector2 Scale => _scale;
+
+        public Vector2 Position => _position;
 
         public void Move(Vector2 translation)
         {
@@ -17,21 +21,30 @@ namespace Dungeon_Roguelike.Source.Sprites
             Rect.Location += translation.ToPoint();
         }
 
-        public Sprite(SpriteBatch spriteBatch, Texture2D texture, Vector2 position)
+        public void SetPosition(Vector2 position)
         {
-            _spriteBatch = spriteBatch;
+            _position = position;
+        }
+
+        public Sprite(Texture2D texture, Vector2 position)
+        {
+
             _texture = texture;
             _position = position;
             _scale = Vector2.One;
         }
 
-        public Sprite(SpriteBatch spriteBatch, Texture2D texture, Vector2 position, Vector2 scale)
+        public Sprite(Texture2D texture, Vector2 position, Vector2 scale)
         {
-            _spriteBatch = spriteBatch;
+
             _texture = texture;
             _position = position;
             _scale = scale;
             //Texture2D e = new Texture2D();
+        }
+
+        protected Sprite()
+        { 
         }
 
         protected virtual void Initialize()
@@ -44,9 +57,9 @@ namespace Dungeon_Roguelike.Source.Sprites
             
         }
         
-        public virtual void Draw()
+        public virtual void Draw(SpriteBatch spriteBatch)
         {
-            _spriteBatch.Draw(_texture, new Rectangle((int)_position.X, (int)_position.Y, (int)(_texture.Width*_scale.X), (int)(_texture.Height*_scale.Y)), Color.White);
+            spriteBatch.Draw(_texture, new Rectangle((int)_position.X, (int)_position.Y, (int)(_texture.Width*_scale.X), (int)(_texture.Height*_scale.Y)), Color.White);
             
         }
     }

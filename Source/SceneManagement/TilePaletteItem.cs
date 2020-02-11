@@ -1,4 +1,4 @@
-﻿namespace Dungeon_Roguelike.Source.Scene
+﻿namespace Dungeon_Roguelike.Source.SceneManagement
 {
     public struct TilePaletteItem
     {

@@ -2,7 +2,7 @@
 
 namespace Dungeon_Roguelike.Source.Scene
 {
-    public class Map
+    public class Tilemap
     {
         public int ID { get; set; }
         public string Name { get; set; }
