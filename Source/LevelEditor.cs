@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using Dungeon_Roguelike.Source.InputSystem;
 using Dungeon_Roguelike.Source.SceneManagement;
 using Dungeon_Roguelike.Source.Sprites;
 using Microsoft.Xna.Framework;
@@ -11,7 +12,7 @@ namespace Dungeon_Roguelike.Source
     public class LevelEditor : Scene
     {
         private MouseState _mouseState, _prevMouseState;
-        private Point _mousePosition;
+        private Point _mousePosition, _snappedMousePosition;
         
         private readonly TiledSprite _currentTile;
         private int _tilesetIndex;
@@ -38,8 +39,11 @@ namespace Dungeon_Roguelike.Source
             
             _currentTile.SetPosition(_mousePosition.ToVector2());
             _currentTile.TileIndex = _tilesetIndex;
-            Console.WriteLine($"TilesetIndex: {_tilesetIndex}");
+            //Console.WriteLine($"TilesetIndex: {_tilesetIndex}");
             
+            if(Input.IsMouseButtonDown(0))
+                Console.WriteLine("Yay!");
+
             _prevMouseState = _mouseState;
         }
 
