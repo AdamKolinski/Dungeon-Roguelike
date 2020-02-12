@@ -7,11 +7,13 @@ namespace Dungeon_Roguelike.Source.Sprites
     {
         protected SpriteEffects s = SpriteEffects.FlipHorizontally;
         protected Texture2D _texture;
-        public Vector2 Position { get; set; }
-        public Vector2 Scale { get; }
+        protected Vector2 _position, _scale;
         public Rectangle Rect;
 
         public Texture2D Texture => _texture;
+        public Vector2 Scale => _scale;
+
+        public Vector2 Position => _position;
 
         public void Move(Vector2 translation)
         {
@@ -19,8 +21,14 @@ namespace Dungeon_Roguelike.Source.Sprites
             Rect.Location += translation.ToPoint();
         }
 
+        public void SetPosition(Vector2 position)
+        {
+            _position = position;
+        }
+
         public Sprite(Texture2D texture, Vector2 position)
         {
+
             _texture = texture;
             Position = position;
             Scale = Vector2.One;
@@ -28,10 +36,15 @@ namespace Dungeon_Roguelike.Source.Sprites
 
         public Sprite(Texture2D texture, Vector2 position, Vector2 scale)
         {
+
             _texture = texture;
             Position = position;
             Scale = scale;
             //Texture2D e = new Texture2D();
+        }
+
+        protected Sprite()
+        { 
         }
 
         protected virtual void Initialize()
@@ -46,7 +59,7 @@ namespace Dungeon_Roguelike.Source.Sprites
         
         public virtual void Draw(SpriteBatch spriteBatch)
         {
-            spriteBatch.Draw(_texture, new Rectangle((int)Position.X, (int)Position.Y, (int)(_texture.Width*Scale.X), (int)(_texture.Height*Scale.Y)), Color.White);
+            spriteBatch.Draw(_texture, new Rectangle((int)_position.X, (int)_position.Y, (int)(_texture.Width*_scale.X), (int)(_texture.Height*_scale.Y)), Color.White);
             
         }
     }

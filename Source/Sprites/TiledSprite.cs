@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework;
+﻿using Dungeon_Roguelike.Source.SceneManagement;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
 namespace Dungeon_Roguelike.Source.Sprites
@@ -14,8 +15,7 @@ namespace Dungeon_Roguelike.Source.Sprites
 
         public int Columns { get; set; }
 
-        public float TileWidth { get; protected set; }
-        public float TileHeight { get; protected set; }
+        public float TileWidth => _tileWidth;
 
         public TiledSprite(Texture2D texture, Vector2 position, int rows, int columns, int tileIndex) : base(texture, position)
         {
@@ -26,6 +26,17 @@ namespace Dungeon_Roguelike.Source.Sprites
             Initialize();
         }
 
+        
+        public TiledSprite(TilesetTexture tilesetTexture, Vector2 position, Vector2 scale, int tileIndex) : base()
+        {
+            _texture = tilesetTexture.Tex;
+            _scale = scale;
+            Rows = tilesetTexture.Rows;
+            Columns = tilesetTexture.Columns;
+            TileIndex = tileIndex;
+            _multiTiled = false;
+            Initialize();
+        }
         public TiledSprite(Texture2D texture, Vector2 position, Vector2 scale, int columns, int rows, int tileIndex) : base(texture, position, scale)
         {
             Rows = rows;
@@ -55,15 +66,16 @@ namespace Dungeon_Roguelike.Source.Sprites
 
         protected override void Initialize()
         {
-            TileWidth = _texture.Width * Scale.X / Columns;
-            TileHeight = _texture.Height * Scale.Y / Rows;
-            Rect = new Rectangle(Position.ToPoint(), new Point((int)TileWidth, (int)TileHeight));
+            s = SpriteEffects.None;
+            _tileWidth = _texture.Width * _scale.X / Columns;
+            _tileHeight = _texture.Height * _scale.Y / Rows;
+            Rect = new Rectangle(_position.ToPoint(), new Point((int)_tileWidth, (int)_tileHeight));
         }
 
         public override void Draw(SpriteBatch spriteBatch)
         {
             if(!_multiTiled)
-                spriteBatch.Draw(_texture, new Rectangle((int)Position.X, (int)Position.Y, (int)TileWidth, (int)TileHeight), new Rectangle((int)(TileWidth/Scale.X * (TileIndex % Columns)), y: (int)(TileHeight/Scale.Y *(TileIndex / Columns)), width: (int)(TileWidth/Scale.X), height: (int)(TileHeight/Scale.Y)),  Color.White, 0, Vector2.Zero,  s, 0);
+                spriteBatch.Draw(_texture, new Rectangle((int)_position.X, (int)_position.Y, (int)_tileWidth, (int)_tileHeight), new Rectangle((int)(_tileWidth/_scale.X * (TileIndex % Columns)), y: (int)(_tileHeight/_scale.Y *(TileIndex / Columns)), width: (int)(_tileWidth/_scale.X), height: (int)(_tileHeight/_scale.Y)),  Color.White, 0, Vector2.Zero,  s, 0);
 
             if (_multiTiled)
             {

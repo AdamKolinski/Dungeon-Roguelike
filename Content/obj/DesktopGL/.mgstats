@@ -1,3 +1,4 @@
 Source File,Dest File,Processor Type,Content Type,Source File Size,Dest File Size,Build Seconds
-"C:/MonoGame Workspace/Dungeon Roguelike/Dungeon Roguelike/Content/Characters.png","C:/MonoGame Workspace/Dungeon Roguelike/Dungeon Roguelike/Content/bin/DesktopGL/characters.xnb","TextureProcessor","Texture2DContent",6637,141205,0,1119517
-"C:/MonoGame Workspace/Dungeon Roguelike/Dungeon Roguelike/Content/Tileset.png","C:/MonoGame Workspace/Dungeon Roguelike/Dungeon Roguelike/Content/bin/DesktopGL/tileset.xnb","TextureProcessor","Texture2DContent",35383,1048661,0,0279812
+"C:/MonoGame Workspace/Dungeon Roguelike/Dungeon Roguelike/Content/Characters.png","C:/MonoGame Workspace/Dungeon Roguelike/Dungeon Roguelike/Content/bin/DesktopGL/characters.xnb","TextureProcessor","Texture2DContent",6637,141205,0,1093626
+"C:/MonoGame Workspace/Dungeon Roguelike/Dungeon Roguelike/Content/Jawbreaker.png","C:/MonoGame Workspace/Dungeon Roguelike/Dungeon Roguelike/Content/bin/DesktopGL/jawbreaker.xnb","TextureProcessor","Texture2DContent",5524,10325,0
+"C:/MonoGame Workspace/Dungeon Roguelike/Dungeon Roguelike/Content/Tileset.png","C:/MonoGame Workspace/Dungeon Roguelike/Dungeon Roguelike/Content/bin/DesktopGL/tileset.xnb","TextureProcessor","Texture2DContent",35383,1048661,0,0312507

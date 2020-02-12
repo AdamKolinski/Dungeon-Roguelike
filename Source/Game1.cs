@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.IO;
 using Dungeon_Roguelike.Source.InputSystem;
 using Dungeon_Roguelike.Source.SceneManagement;
-using Dungeon_Roguelike.Source.Scenes;
 using Dungeon_Roguelike.Source.Sprites;
 using Dungeon_Roguelike.Source.TilesetSystem;
 using Microsoft.Xna.Framework;
@@ -24,8 +23,9 @@ namespace Dungeon_Roguelike.Source
 
         private Sprite _map;
         private Player _player;
-        private FileScene _fileScene;
-        
+        private Tilemap _tilemap;
+        private LevelEditor _levelEditor;
+
         public Game1()
         {
             _graphics = new GraphicsDeviceManager(this);
@@ -40,9 +40,16 @@ namespace Dungeon_Roguelike.Source
             ScreenWidth = _graphics.PreferredBackBufferWidth;
             ScreenHeight = _graphics.PreferredBackBufferHeight;
             
+            string tmp = File.ReadAllText("./Content/Tilemap.json");
+            _tilemap = JsonConvert.DeserializeObject<Tilemap>(tmp);
             
-            string tmp = File.ReadAllText("./Content/mapTest2.json");
-            _fileScene = JsonConvert.DeserializeObject<FileScene>(tmp);
+            _levelEditor = new LevelEditor("Level Editor", "tileset", new Point(10, 10), new Vector2(4, 4));
+
+            SceneManager.ContentManager = Content;
+            SceneManager.AddScene(_levelEditor);
+            SceneManager.AddScene(new Scene("Level01", _tilemap));
+            
+            SceneManager.LoadScene("Level01");
 
             Input.Initialize();
             base.Initialize();
@@ -51,18 +58,8 @@ namespace Dungeon_Roguelike.Source
         protected override void LoadContent()
         {
             _spriteBatch = new SpriteBatch(GraphicsDevice);
-            _canvasBatch = new SpriteBatch(GraphicsDevice);
-            
-            Tileset tmpTileset = new Tileset("tileset", Content.Load<Texture2D>("tileset"), 32, 32);
-            TilesetsManager.Tilesets.Add("tileset", tmpTileset);
-            tmpTileset = new Tileset("characters", Content.Load<Texture2D>("characters"), 9, 8);
-            TilesetsManager.Tilesets.Add("characters", tmpTileset);
-            
-            LevelEditor levelEditor = new LevelEditor(TilesetsManager.GetTileset("tileset"));
-            SceneManager.Scenes.Add(_fileScene);
-            SceneManager.Scenes.Add(levelEditor);
-            SceneManager.GenerateTiles();
-            SceneManager.LoadScene(0);
+
+            TilesetManager.CreateTileset("tileset", Content.Load<Texture2D>("jawbreaker"), 5, 8);
             _player = new Player(Content.Load<Texture2D>("characters"), new Vector2(100, 100), new Vector2(2, 2), 9, 8, 0);
         }
         
@@ -78,31 +75,23 @@ namespace Dungeon_Roguelike.Source
             
             Input.Update();
             _player.Update(gameTime);
+            
             SceneManager.CurrentScene.Update(gameTime);
-            //Console.WriteLine(Input.GetAxis("Horizontal"));
-            
-            
             base.Update(gameTime);
         }
         
         protected override void Draw(GameTime gameTime)
         {
             GraphicsDevice.Clear(new Color(34, 34, 34));
-
-            //_spriteBatch.Begin(samplerState: SamplerState.PointClamp, transformMatrix: _camera.Transform);
             
-            //_spriteBatch.Begin(samplerState: SamplerState.PointClamp);
+            
             _spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend, SamplerState.PointClamp, DepthStencilState.None, RasterizerState.CullCounterClockwise);
-            SceneManager.Draw(_spriteBatch);
-            //_map.Draw(_spriteBatch);
-            _player.Draw(_spriteBatch);
-            _spriteBatch.End();
-            
-            _canvasBatch.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend, SamplerState.PointClamp, DepthStencilState.None, RasterizerState.CullCounterClockwise);
-            //SceneManager.CurrentScene.DrawUI(_canvasBatch);
-            _canvasBatch.End();
-            // TODO: Add your drawing code here
 
+            _tilemap.Draw(_spriteBatch);
+            //_player.Draw(_spriteBatch);
+            SceneManager.CurrentScene.Draw(_spriteBatch);
+            
+            _spriteBatch.End();
             base.Draw(gameTime);
         }
     }

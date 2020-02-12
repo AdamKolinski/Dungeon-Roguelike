@@ -31,23 +31,21 @@ namespace Dungeon_Roguelike.Source.InputSystem
             return _currentKeyboardState.IsKeyDown(key) && !_previousKeyboardState.IsKeyDown(key);
         }
 
-        public static bool IsMouseKeyDown(int button)
+        public static bool IsMouseButtonDown(int button)
         {
-            bool toReturn = false;
             switch (button)
             {
                 case 0:
-                    toReturn = _currentMouseState.LeftButton == ButtonState.Pressed &&
-                        _previousMouseState.LeftButton != ButtonState.Pressed;
-                    break;
+                    return _currentMouseState.LeftButton == ButtonState.Pressed &&
+                           _previousMouseState.LeftButton != ButtonState.Pressed;
                 case 1:
-                    toReturn = _currentMouseState.RightButton == ButtonState.Pressed &&
-                               _previousMouseState.RightButton != ButtonState.Pressed;
-                    break;
+                    return _currentMouseState.RightButton == ButtonState.Pressed &&
+                           _previousMouseState.RightButton != ButtonState.Pressed;
+                default:
+                    return false;
             }
-
-            return toReturn;
         }
+        
         public static void Update()
         {
             GetState();

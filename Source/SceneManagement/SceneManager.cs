@@ -1,28 +1,32 @@
-﻿using System.Collections.Generic;
-using Microsoft.Xna.Framework.Graphics;
+﻿using System;
+using System.Collections.Generic;
+using Microsoft.Xna.Framework.Content;
 
 namespace Dungeon_Roguelike.Source.SceneManagement
 {
-    public static class SceneManager
+    public class SceneManager
     {
-        public static List<Scene> Scenes = new List<Scene>();
-        public static Scene CurrentScene { get; set; }
+        public static ContentManager ContentManager;
+        private static Dictionary<string, Scene> _scenes = new Dictionary<string, Scene>();
+        private static Scene _currentScene;
+        public static Scene CurrentScene => _currentScene;
 
-        public static void LoadScene(int sceneIndex)
+        public static void AddScene(Scene scene)
         {
-            CurrentScene = Scenes[sceneIndex];
+            _scenes.Add(scene.Name, scene);
         }
-
-        public static void Draw(SpriteBatch spriteBatch)
+        public static void LoadScene(string name)
         {
-            CurrentScene.Draw(spriteBatch);
-        }
-
-        public static void GenerateTiles()
-        {
-            foreach (var scene in Scenes)
+            if (_scenes.TryGetValue(name, out _currentScene))
             {
-                scene.GenerateTiles();
+                Console.WriteLine("Scene loaded!");
+                CurrentScene.LoadContent(ContentManager);
+            }
+            else
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("Problem occured during loading scene!");
+                Console.ForegroundColor = ConsoleColor.White;
             }
         }
     }

@@ -1,32 +1,28 @@
 ﻿{
-  "SceneIndex": 0,
-  "Tiles": [
+  "Name": "Level 01",
+  "Size": "5, 2",
+  "TilePalette": [
     {
       "ID": 0,
       "HasCollision": false,
-      "TextureName": "",
-      "TileIndex": 0
+      "TilesetName": "tileset",
+      "TilesetIndex": 32
     },
     {
       "ID": 1,
       "HasCollision": false,
-      "TextureName": "tileset",
-      "TileIndex": 4
+      "TilesetName": "tileset",
+      "TilesetIndex": 45
     },
     {
       "ID": 2,
       "HasCollision": true,
-      "TextureName": "tileset",
-      "TileIndex": 36
+      "TilesetName": "tileset",
+      "TilesetIndex": 34
     }
   ],
-  "Map":
-    {
-      "Name": "Test Map",
-      "Size": "5, 2",
-      "MapTiles": [
-        1, 2, 1, 2, 1, 
-        2, 1, 2, 1, 2
-      ]
-    }
+  "Tileset": [
+    [1, 2, 1, 2, 1],
+    [2, 1, 2, 1, 2]
+  ]
 }

@@ -13,7 +13,7 @@ namespace Dungeon_Roguelike.Source.Sprites
         }
 
         #region Constructors
-        public BreakableSprite(SpriteBatch spriteBatch, Texture2D texture, Vector2 position, int rows, int columns, int tileIndex) : base(texture, position, rows, columns, tileIndex)
+        public BreakableSprite(Texture2D texture, Vector2 position, int rows, int columns, int tileIndex) : base(texture, position, rows, columns, tileIndex)
         {
             Rows = rows;
             Columns = columns;
