@@ -1,1 +1,528 @@
-{"Name":"Test Tilemap","Size":"10, 10","TilePalette":[{"ID":0,"HasCollision":false,"TilesetName":"tileset","TilesetIndex":7},{"ID":1,"HasCollision":false,"TilesetName":"tileset","TilesetIndex":48},{"ID":2,"HasCollision":false,"TilesetName":"tileset","TilesetIndex":29},{"ID":3,"HasCollision":false,"TilesetName":"tileset","TilesetIndex":31},{"ID":4,"HasCollision":false,"TilesetName":"tileset","TilesetIndex":25},{"ID":5,"HasCollision":false,"TilesetName":"tileset","TilesetIndex":21},{"ID":6,"HasCollision":false,"TilesetName":"tileset","TilesetIndex":27},{"ID":7,"HasCollision":false,"TilesetName":"tileset","TilesetIndex":28},{"ID":8,"HasCollision":false,"TilesetName":"tileset","TilesetIndex":22},{"ID":9,"HasCollision":false,"TilesetName":"tileset","TilesetIndex":6},{"ID":10,"HasCollision":false,"TilesetName":"tileset","TilesetIndex":5},{"ID":11,"HasCollision":false,"TilesetName":"tileset","TilesetIndex":14},{"ID":12,"HasCollision":false,"TilesetName":"tileset","TilesetIndex":30},{"ID":13,"HasCollision":false,"TilesetName":"tileset","TilesetIndex":32},{"ID":14,"HasCollision":false,"TilesetName":"tileset","TilesetIndex":24},{"ID":15,"HasCollision":false,"TilesetName":"tileset","TilesetIndex":23},{"ID":16,"HasCollision":false,"TilesetName":"tileset","TilesetIndex":13},{"ID":17,"HasCollision":false,"TilesetName":"tileset","TilesetIndex":15}],"Tileset":[[15,48,48,48,48,48,48,32,48,6],[48,48,48,6,48,31,48,48,24,48],[48,21,25,27,25,25,29,48,48,13],[48,14,22,28,30,22,22,48,23,48],[48,32,48,48,48,48,48,48,48,48],[48,48,24,48,5,48,48,31,48,48],[48,13,48,48,48,32,48,48,48,23],[24,48,21,25,25,25,25,29,48,48],[48,31,14,30,22,30,22,22,6,48],[48,48,48,32,48,48,32,48,48,48]]}
+{
+  "Name": "Test Tilemap",
+  "Size": "20, 15",
+  "TilePalette": [
+    {
+      "ID": 0,
+      "HasCollision": false,
+      "TilesetName": "tileset",
+      "TilesetIndex": 39
+    },
+    {
+      "ID": 1,
+      "HasCollision": false,
+      "TilesetName": "tileset",
+      "TilesetIndex": 11
+    },
+    {
+      "ID": 2,
+      "HasCollision": false,
+      "TilesetName": "tileset",
+      "TilesetIndex": 10
+    },
+    {
+      "ID": 3,
+      "HasCollision": false,
+      "TilesetName": "tileset",
+      "TilesetIndex": 4
+    },
+    {
+      "ID": 4,
+      "HasCollision": false,
+      "TilesetName": "tileset",
+      "TilesetIndex": 3
+    },
+    {
+      "ID": 5,
+      "HasCollision": false,
+      "TilesetName": "tileset",
+      "TilesetIndex": 25
+    },
+    {
+      "ID": 6,
+      "HasCollision": false,
+      "TilesetName": "tileset",
+      "TilesetIndex": 28
+    },
+    {
+      "ID": 7,
+      "HasCollision": false,
+      "TilesetName": "tileset",
+      "TilesetIndex": 33
+    },
+    {
+      "ID": 8,
+      "HasCollision": false,
+      "TilesetName": "tileset",
+      "TilesetIndex": 34
+    },
+    {
+      "ID": 9,
+      "HasCollision": false,
+      "TilesetName": "tileset",
+      "TilesetIndex": 36
+    },
+    {
+      "ID": 10,
+      "HasCollision": false,
+      "TilesetName": "tileset",
+      "TilesetIndex": 27
+    },
+    {
+      "ID": 11,
+      "HasCollision": false,
+      "TilesetName": "tileset",
+      "TilesetIndex": 22
+    },
+    {
+      "ID": 12,
+      "HasCollision": false,
+      "TilesetName": "tileset",
+      "TilesetIndex": 21
+    },
+    {
+      "ID": 13,
+      "HasCollision": false,
+      "TilesetName": "tileset",
+      "TilesetIndex": 14
+    },
+    {
+      "ID": 14,
+      "HasCollision": false,
+      "TilesetName": "tileset",
+      "TilesetIndex": 13
+    },
+    {
+      "ID": 15,
+      "HasCollision": false,
+      "TilesetName": "tileset",
+      "TilesetIndex": 9
+    },
+    {
+      "ID": 16,
+      "HasCollision": false,
+      "TilesetName": "tileset",
+      "TilesetIndex": 6
+    },
+    {
+      "ID": 17,
+      "HasCollision": false,
+      "TilesetName": "tileset",
+      "TilesetIndex": 7
+    },
+    {
+      "ID": 18,
+      "HasCollision": false,
+      "TilesetName": "tileset",
+      "TilesetIndex": 5
+    },
+    {
+      "ID": 19,
+      "HasCollision": false,
+      "TilesetName": "tileset",
+      "TilesetIndex": 2
+    },
+    {
+      "ID": 20,
+      "HasCollision": false,
+      "TilesetName": "tileset",
+      "TilesetIndex": 20
+    },
+    {
+      "ID": 21,
+      "HasCollision": false,
+      "TilesetName": "tileset",
+      "TilesetIndex": 31
+    },
+    {
+      "ID": 22,
+      "HasCollision": false,
+      "TilesetName": "tileset",
+      "TilesetIndex": 32
+    },
+    {
+      "ID": 23,
+      "HasCollision": false,
+      "TilesetName": "tileset",
+      "TilesetIndex": 15
+    },
+    {
+      "ID": 24,
+      "HasCollision": false,
+      "TilesetName": "tileset",
+      "TilesetIndex": 24
+    },
+    {
+      "ID": 25,
+      "HasCollision": false,
+      "TilesetName": "tileset",
+      "TilesetIndex": 23
+    },
+    {
+      "ID": 26,
+      "HasCollision": false,
+      "TilesetName": "tileset",
+      "TilesetIndex": 16
+    },
+    {
+      "ID": 27,
+      "HasCollision": false,
+      "TilesetName": "tileset",
+      "TilesetIndex": 26
+    },
+    {
+      "ID": 28,
+      "HasCollision": false,
+      "TilesetName": "tileset",
+      "TilesetIndex": 18
+    },
+    {
+      "ID": 29,
+      "HasCollision": false,
+      "TilesetName": "tileset",
+      "TilesetIndex": 30
+    }
+  ],
+  "Tileset": [
+    [
+      24,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      24,
+      0,
+      0,
+      0
+    ],
+    [
+      24,
+      0,
+      21,
+      0,
+      0,
+      25,
+      24,
+      21,
+      0,
+      24,
+      21,
+      0,
+      21,
+      23,
+      0
+    ],
+    [
+      26,
+      24,
+      0,
+      25,
+      14,
+      0,
+      17,
+      0,
+      0,
+      0,
+      0,
+      0,
+      23,
+      21,
+      0
+    ],
+    [
+      26,
+      24,
+      0,
+      22,
+      24,
+      0,
+      16,
+      0,
+      21,
+      0,
+      0,
+      0,
+      21,
+      0,
+      22
+    ],
+    [
+      24,
+      0,
+      0,
+      0,
+      0,
+      24,
+      18,
+      16,
+      0,
+      0,
+      0,
+      23,
+      22,
+      0,
+      0
+    ],
+    [
+      0,
+      0,
+      10,
+      5,
+      5,
+      5,
+      15,
+      15,
+      5,
+      5,
+      5,
+      7,
+      0,
+      0,
+      0
+    ],
+    [
+      0,
+      24,
+      8,
+      19,
+      27,
+      27,
+      1,
+      2,
+      28,
+      27,
+      27,
+      8,
+      0,
+      21,
+      0
+    ],
+    [
+      21,
+      0,
+      6,
+      4,
+      3,
+      1,
+      1,
+      1,
+      3,
+      4,
+      1,
+      6,
+      0,
+      0,
+      0
+    ],
+    [
+      0,
+      26,
+      4,
+      4,
+      1,
+      1,
+      3,
+      1,
+      1,
+      1,
+      1,
+      28,
+      21,
+      0,
+      0
+    ],
+    [
+      0,
+      0,
+      1,
+      1,
+      4,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      0,
+      0,
+      0
+    ],
+    [
+      0,
+      21,
+      8,
+      3,
+      1,
+      3,
+      1,
+      1,
+      2,
+      1,
+      1,
+      8,
+      0,
+      0,
+      26
+    ],
+    [
+      25,
+      0,
+      8,
+      1,
+      3,
+      1,
+      1,
+      1,
+      1,
+      3,
+      4,
+      8,
+      0,
+      25,
+      0
+    ],
+    [
+      22,
+      24,
+      9,
+      5,
+      5,
+      5,
+      4,
+      3,
+      12,
+      5,
+      5,
+      20,
+      0,
+      0,
+      22
+    ],
+    [
+      0,
+      0,
+      13,
+      29,
+      29,
+      11,
+      16,
+      18,
+      13,
+      11,
+      29,
+      11,
+      0,
+      0,
+      0
+    ],
+    [
+      26,
+      0,
+      0,
+      0,
+      0,
+      0,
+      18,
+      0,
+      0,
+      21,
+      0,
+      0,
+      22,
+      24,
+      0
+    ],
+    [
+      0,
+      0,
+      0,
+      24,
+      21,
+      0,
+      17,
+      0,
+      23,
+      24,
+      14,
+      0,
+      0,
+      21,
+      0
+    ],
+    [
+      0,
+      0,
+      14,
+      0,
+      26,
+      0,
+      0,
+      0,
+      0,
+      0,
+      25,
+      0,
+      22,
+      0,
+      0
+    ],
+    [
+      0,
+      0,
+      25,
+      25,
+      0,
+      0,
+      0,
+      21,
+      24,
+      0,
+      0,
+      0,
+      0,
+      0,
+      25
+    ],
+    [
+      24,
+      0,
+      21,
+      0,
+      22,
+      0,
+      24,
+      0,
+      23,
+      0,
+      21,
+      0,
+      24,
+      14,
+      0
+    ],
+    [
+      21,
+      24,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  ]
+}

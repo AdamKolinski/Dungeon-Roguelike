@@ -10,12 +10,14 @@ namespace Dungeon_Roguelike.Source.Sprites
         public int[,] TileIndexes { get; set; }
 
         public int TileIndex;
+        protected float _tileWidth, _tileHeight;
 
         public int Rows { get; set; }
 
         public int Columns { get; set; }
 
         public float TileWidth => _tileWidth;
+        public float TileHeight => _tileHeight;
 
         public TiledSprite(Texture2D texture, Vector2 position, int rows, int columns, int tileIndex) : base(texture, position)
         {

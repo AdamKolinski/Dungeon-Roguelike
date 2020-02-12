@@ -51,8 +51,8 @@ namespace Dungeon_Roguelike.Source.Sprites
 
         protected override void Initialize()
         {
-            TileWidth = _texture.Width * Scale.X / Columns;
-            TileHeight = _texture.Height * Scale.Y / Rows;
+            _tileWidth = _texture.Width * Scale.X / Columns;
+            _tileHeight = _texture.Height * Scale.Y / Rows;
             Rect = new Rectangle(Position.ToPoint(), new Point((int)TileWidth, (int)TileHeight));
         }
         #endregion

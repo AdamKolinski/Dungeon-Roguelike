@@ -4,12 +4,10 @@
   <Platform>DesktopGL</Platform>
   <Config />
   <SourceFiles>
-    <File>C:/MonoGame Workspace/Dungeon Roguelike/Dungeon Roguelike/Content/Characters.png</File>
     <File>C:/MonoGame Workspace/Dungeon Roguelike/Dungeon Roguelike/Content/Jawbreaker.png</File>
     <File>C:/MonoGame Workspace/Dungeon Roguelike/Dungeon Roguelike/Content/Tileset.png</File>
   </SourceFiles>
   <DestFiles>
-    <File>characters.png</File>
     <File>jawbreaker.png</File>
     <File>tileset.png</File>
   </DestFiles>

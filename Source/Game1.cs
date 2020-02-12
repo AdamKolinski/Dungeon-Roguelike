@@ -43,13 +43,11 @@ namespace Dungeon_Roguelike.Source
             string tmp = File.ReadAllText("./Content/Tilemap.json");
             _tilemap = JsonConvert.DeserializeObject<Tilemap>(tmp);
             
-            _levelEditor = new LevelEditor("Level Editor", "tileset", new Point(10, 10), new Vector2(4, 4));
+            _levelEditor = new LevelEditor("Level Editor", "tileset", new Point(20, 15), new Vector2(4, 4));
 
             SceneManager.ContentManager = Content;
             SceneManager.AddScene(_levelEditor);
             SceneManager.AddScene(new Scene("Level01", _tilemap));
-            
-            SceneManager.LoadScene("Level01");
 
             Input.Initialize();
             base.Initialize();
@@ -60,7 +58,8 @@ namespace Dungeon_Roguelike.Source
             _spriteBatch = new SpriteBatch(GraphicsDevice);
 
             TilesetManager.CreateTileset("tileset", Content.Load<Texture2D>("jawbreaker"), 5, 8);
-            _player = new Player(Content.Load<Texture2D>("characters"), new Vector2(100, 100), new Vector2(2, 2), 9, 8, 0);
+            SceneManager.LoadScene("Level01");
+            //_player = new Player(Content.Load<Texture2D>("characters"), new Vector2(100, 100), new Vector2(2, 2), 9, 8, 0);
         }
         
         protected override void UnloadContent()
@@ -74,7 +73,7 @@ namespace Dungeon_Roguelike.Source
                 Exit();
             
             Input.Update();
-            _player.Update(gameTime);
+            //_player.Update(gameTime);
             
             SceneManager.CurrentScene.Update(gameTime);
             base.Update(gameTime);
@@ -86,8 +85,7 @@ namespace Dungeon_Roguelike.Source
             
             
             _spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend, SamplerState.PointClamp, DepthStencilState.None, RasterizerState.CullCounterClockwise);
-
-            _tilemap.Draw(_spriteBatch);
+            
             //_player.Draw(_spriteBatch);
             SceneManager.CurrentScene.Draw(_spriteBatch);
             

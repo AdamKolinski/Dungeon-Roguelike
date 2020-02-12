@@ -18,7 +18,6 @@ C:\MonoGame Workspace\Dungeon Roguelike\Dungeon Roguelike\obj\Debug\Dungeon Rogu
 C:\MonoGame Workspace\Dungeon Roguelike\Dungeon Roguelike\obj\Debug\Dungeon Roguelike.pdb
 C:\MonoGame Workspace\Dungeon Roguelike\Dungeon Roguelike\bin\DesktopGL\AnyCPU\Debug\Newtonsoft.Json.dll
 C:\MonoGame Workspace\Dungeon Roguelike\Dungeon Roguelike\bin\DesktopGL\AnyCPU\Debug\Newtonsoft.Json.xml
-C:\MonoGame Workspace\Dungeon Roguelike\Dungeon Roguelike\bin\DesktopGL\AnyCPU\Debug\Content\characters.xnb
 C:\MonoGame Workspace\Dungeon Roguelike\Dungeon Roguelike\bin\DesktopGL\AnyCPU\Debug\Content\Test.json
 C:\MonoGame Workspace\Dungeon Roguelike\Dungeon Roguelike\bin\DesktopGL\AnyCPU\Debug\Content\tileset.xnb
 C:\MonoGame Workspace\Dungeon Roguelike\Dungeon Roguelike\bin\DesktopGL\AnyCPU\Debug\icon.ico

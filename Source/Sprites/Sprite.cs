@@ -17,7 +17,7 @@ namespace Dungeon_Roguelike.Source.Sprites
 
         public void Move(Vector2 translation)
         {
-            Position += new Vector2((int)translation.X, (int)translation.Y);
+            _position += new Vector2((int)translation.X, (int)translation.Y);
             Rect.Location += translation.ToPoint();
         }
 
@@ -30,16 +30,16 @@ namespace Dungeon_Roguelike.Source.Sprites
         {
 
             _texture = texture;
-            Position = position;
-            Scale = Vector2.One;
+            _position = position;
+            _scale = Vector2.One;
         }
 
         public Sprite(Texture2D texture, Vector2 position, Vector2 scale)
         {
 
             _texture = texture;
-            Position = position;
-            Scale = scale;
+            _position = position;
+            _scale = scale;
             //Texture2D e = new Texture2D();
         }
 

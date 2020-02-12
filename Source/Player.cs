@@ -10,7 +10,7 @@ namespace Dungeon_Roguelike.Source
         private float _movementSpeed = 10; 
         public override void Update(GameTime gameTime)
         {
-            Position += new Vector2(Input.GetAxis("Horizontal"), -Input.GetAxis("Vertical")) * _movementSpeed * gameTime.ElapsedGameTime.Milliseconds/100f;
+            _position += new Vector2(Input.GetAxis("Horizontal"), -Input.GetAxis("Vertical")) * _movementSpeed * gameTime.ElapsedGameTime.Milliseconds/100f;
         }
 
         #region Constructors
