@@ -25,6 +25,18 @@
 /processorParam:TextureFormat=Color
 /build:Characters.png;characters.png
 
+#begin Jawbreaker.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Jawbreaker.png;jawbreaker.png
+
 #begin Tileset.png
 /importer:TextureImporter
 /processor:TextureProcessor

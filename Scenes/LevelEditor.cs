@@ -1,11 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using Dungeon_Roguelike.Source.InputSystem;
 using Dungeon_Roguelike.Source.SceneManagement;
 using Dungeon_Roguelike.Source.Sprites;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using Newtonsoft.Json;
 
 namespace Dungeon_Roguelike.Source
 {
@@ -14,20 +17,31 @@ namespace Dungeon_Roguelike.Source
         private MouseState _mouseState, _prevMouseState;
         private Point _mousePosition, _snappedMousePosition;
         
-        private readonly TiledSprite _cursorTile, _tilesetTile;
+        private TiledSprite _cursorTile, _tilesetTile;
         private int _tilesetIndex;
         private int[,] _tileset;
         private List<Tile> _tilePalette;
 
-        public LevelEditor(string tilesetName, Point tilesetSize, Vector2 spriteScale)
+        private Point _tilesetSize;
+        private readonly string _tilesetName;
+        private readonly Vector2 _spriteScale;
+
+        public LevelEditor(string sceneName, string tilesetName, Point tilesetSize, Vector2 spriteScale) : base(sceneName)
         {
+            _tilesetName = tilesetName;
+            _spriteScale = spriteScale;
             _tilesetIndex = 1;
-            _cursorTile = new TiledSprite(TilesetManager.GetTileset(tilesetName), Vector2.Zero, spriteScale, _tilesetIndex);
-            _tilesetTile = new TiledSprite(TilesetManager.GetTileset(tilesetName), Vector2.Zero, spriteScale, _tilesetIndex);
             _tileset = new int[tilesetSize.X, tilesetSize.Y];
             _tilePalette = new List<Tile>();
+            _tilesetSize = tilesetSize;
         }
-        
+
+        public override void LoadContent(ContentManager contentManager)
+        {
+            _cursorTile = new TiledSprite(TilesetManager.GetTileset(_tilesetName), Vector2.Zero, _spriteScale, _tilesetIndex);
+            _tilesetTile = new TiledSprite(TilesetManager.GetTileset(_tilesetName), Vector2.Zero, _spriteScale, _tilesetIndex);
+        }
+
         public int RoundToMultiplication(int number, int multiplication, bool asCount = false)
         {
             if (multiplication == 0)
@@ -58,6 +72,12 @@ namespace Dungeon_Roguelike.Source
             
             //Console.WriteLine($"TilesetIndex: {_tilesetIndex}");
             //Console.WriteLine($"Snapped mouse position: {_snappedMousePosition}");
+
+            if (Input.IsKeyDown(Keys.P))
+            {
+                SaveTilemap();
+                Console.WriteLine("Tilemap saved!");
+            }
             
             if(Input.IsMouseButtonDown(0))
                 PlaceTile();
@@ -74,8 +94,8 @@ namespace Dungeon_Roguelike.Source
             if (tilesetPosition.X < _tileset.GetLength(0) && tilesetPosition.Y < _tileset.GetLength(1))
             {
                 AddToPalette();
-                _tileset[tilesetPosition.X, tilesetPosition.Y] = _tilesetIndex;
-//                DebugTileset(_tileset);
+                _tileset[tilesetPosition.X, tilesetPosition.Y] = GetIDFromPalette(_tilesetIndex);
+              DebugTileset(_tileset);
             }
         }
 
@@ -112,20 +132,41 @@ namespace Dungeon_Roguelike.Source
                     TilesetName = "tileset",
                     TilesetIndex = _tilesetIndex
                 };
-                Console.WriteLine("Adding to palette");
+                //Console.WriteLine("Adding to palette");
                 _tilePalette.Add(newTile);
             }
         }
 
-        private int GetTilesetIndexFromPalette(int tileIndex)
+        private int GetTilesetIndexFromPalette(int tileID)
         {
             foreach (var tile in _tilePalette)
-            {
-                if (tile.TilesetIndex == tileIndex)
+                if (tile.ID == tileID)
                     return tile.TilesetIndex;
-            }
-
+            
             return -1;
+        }
+
+        private int GetIDFromPalette(int tilesetIndex)
+        {
+            foreach (var tile in _tilePalette)
+                if (tile.TilesetIndex == tilesetIndex)
+                    return tile.ID;
+            
+            return -1;
+        }
+
+        private void SaveTilemap()
+        {
+            Tilemap tilemap = new Tilemap
+            {
+                Name = "Test Tilemap",
+                Size = _tilesetSize.ToVector2(),
+                TilePalette = _tilePalette.ToArray(),
+                Tileset = _tileset
+            };
+            
+            string json = JsonConvert.SerializeObject(tilemap);
+            File.WriteAllText("./Content/Tilemap.json", json);
         }
         
         public override void Draw(SpriteBatch spriteBatch)
