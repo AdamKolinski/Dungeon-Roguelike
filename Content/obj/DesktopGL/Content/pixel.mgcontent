@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-  <SourceFile>C:/MonoGame Workspace/Dungeon Roguelike/Dungeon Roguelike/Content/Tileset.png</SourceFile>
-  <SourceTime>2019-07-29T09:49:02+02:00</SourceTime>
-  <DestFile>C:/MonoGame Workspace/Dungeon Roguelike/Dungeon Roguelike/Content/bin/DesktopGL/tileset.xnb</DestFile>
-  <DestTime>2020-02-13T00:18:07.4124298+01:00</DestTime>
+  <SourceFile>C:/MonoGame Workspace/Dungeon Roguelike/Dungeon Roguelike/Content/pixel.png</SourceFile>
+  <SourceTime>2020-02-13T00:16:37.4091458+01:00</SourceTime>
+  <DestFile>C:/MonoGame Workspace/Dungeon Roguelike/Dungeon Roguelike/Content/bin/DesktopGL/Content/pixel.xnb</DestFile>
+  <DestTime>2020-02-13T00:18:36.5042041+01:00</DestTime>
   <Importer>TextureImporter</Importer>
   <ImporterTime>2018-12-08T17:35:54+01:00</ImporterTime>
   <Processor>TextureProcessor</Processor>

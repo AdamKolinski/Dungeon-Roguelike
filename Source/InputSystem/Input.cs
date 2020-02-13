@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
 
 namespace Dungeon_Roguelike.Source.InputSystem
@@ -8,6 +9,9 @@ namespace Dungeon_Roguelike.Source.InputSystem
         private static readonly List<Axis> Axes = new List<Axis>();
         private static KeyboardState _currentKeyboardState, _previousKeyboardState;
         private static MouseState _currentMouseState, _previousMouseState;
+        public static bool UiClicked;
+        
+        public static Point MousePosition => _currentMouseState.Position;
 
         public static void Initialize()
         {
@@ -31,23 +35,35 @@ namespace Dungeon_Roguelike.Source.InputSystem
             return _currentKeyboardState.IsKeyDown(key) && !_previousKeyboardState.IsKeyDown(key);
         }
 
-        public static bool IsMouseButtonDown(int button)
+        public static bool IsMouseButtonDown(int button, bool ignoreUi = false)
         {
+            bool toReturn;
             switch (button)
             {
                 case 0:
-                    return _currentMouseState.LeftButton == ButtonState.Pressed &&
+                    toReturn = _currentMouseState.LeftButton == ButtonState.Pressed &&
                            _previousMouseState.LeftButton != ButtonState.Pressed;
+                    break;
                 case 1:
-                    return _currentMouseState.RightButton == ButtonState.Pressed &&
+                    toReturn = _currentMouseState.RightButton == ButtonState.Pressed &&
                            _previousMouseState.RightButton != ButtonState.Pressed;
+                    break;
                 default:
-                    return false;
+                    toReturn = false;
+                    break;
             }
+
+            if (ignoreUi)
+            {
+                return toReturn;
+            }
+
+            return !UiClicked && toReturn;
         }
         
         public static void Update()
         {
+            UiClicked = false;
             GetState();
             foreach (var axis in Axes)
             {

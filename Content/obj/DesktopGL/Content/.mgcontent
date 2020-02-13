@@ -4,11 +4,15 @@
   <Platform>DesktopGL</Platform>
   <Config />
   <SourceFiles>
+    <File>C:/MonoGame Workspace/Dungeon Roguelike/Dungeon Roguelike/Content/Arial.spritefont</File>
     <File>C:/MonoGame Workspace/Dungeon Roguelike/Dungeon Roguelike/Content/Jawbreaker.png</File>
+    <File>C:/MonoGame Workspace/Dungeon Roguelike/Dungeon Roguelike/Content/pixel.png</File>
     <File>C:/MonoGame Workspace/Dungeon Roguelike/Dungeon Roguelike/Content/Tileset.png</File>
   </SourceFiles>
   <DestFiles>
+    <File xsi:nil="true" />
     <File>jawbreaker.png</File>
+    <File xsi:nil="true" />
     <File>tileset.png</File>
   </DestFiles>
 </SourceFileCollection>

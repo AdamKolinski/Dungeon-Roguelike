@@ -5,6 +5,7 @@ using Dungeon_Roguelike.Source.InputSystem;
 using Dungeon_Roguelike.Source.SceneManagement;
 using Dungeon_Roguelike.Source.Sprites;
 using Dungeon_Roguelike.Source.TilesetSystem;
+using Dungeon_Roguelike.Source.UI;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
@@ -20,11 +21,8 @@ namespace Dungeon_Roguelike.Source
         public static float ScreenWidth { get; set; }
         public static float ScreenHeight { get; set; }
         public static List<Sprite> CollisionObjects;
-
-        private Sprite _map;
+        
         private Player _player;
-        private Tilemap _tilemap;
-        private LevelEditor _levelEditor;
 
         public Game1()
         {
@@ -40,14 +38,29 @@ namespace Dungeon_Roguelike.Source
             ScreenWidth = _graphics.PreferredBackBufferWidth;
             ScreenHeight = _graphics.PreferredBackBufferHeight;
             
-            string tmp = File.ReadAllText("./Content/Tilemap.json");
-            _tilemap = JsonConvert.DeserializeObject<Tilemap>(tmp);
+            string tmp = File.ReadAllText("./Content/Tilemap2.json");
+            Tilemap tilemap = JsonConvert.DeserializeObject<Tilemap>(tmp);
             
-            _levelEditor = new LevelEditor("Level Editor", "tileset", new Point(20, 15), new Vector2(4, 4));
+            
+            Text text = new Text(new Point(0,0), "Arial", "Hello World!");
+            Button button = new Button(new Point(0, 100), new Point(150, 50), "pixel", "Button")
+            {
+                Text = {Color = Color.Black}
+            };
+
+            Scene levelEditor = new LevelEditor("Level Editor", "tileset", new Point(20, 15), new Vector2(4, 4));
+            Scene testScene = new Scene("Level01", tilemap);
+            
+            Canvas testCanvas = new Canvas();
+            testCanvas.UIElements.Add(button);
+            testCanvas.UIElements.Add(text);
 
             SceneManager.ContentManager = Content;
-            SceneManager.AddScene(_levelEditor);
-            SceneManager.AddScene(new Scene("Level01", _tilemap));
+            SceneManager.AddScene(levelEditor);
+            SceneManager.AddScene(testScene);
+
+            testScene.Canvas = testCanvas;
+            levelEditor.Canvas = testCanvas;
 
             Input.Initialize();
             base.Initialize();
@@ -56,7 +69,8 @@ namespace Dungeon_Roguelike.Source
         protected override void LoadContent()
         {
             _spriteBatch = new SpriteBatch(GraphicsDevice);
-
+            Helpers.pixel = Content.Load<Texture2D>("pixel");
+            
             TilesetManager.CreateTileset("tileset", Content.Load<Texture2D>("jawbreaker"), 5, 8);
             SceneManager.LoadScene("Level01");
             //_player = new Player(Content.Load<Texture2D>("characters"), new Vector2(100, 100), new Vector2(2, 2), 9, 8, 0);
@@ -74,7 +88,6 @@ namespace Dungeon_Roguelike.Source
             
             Input.Update();
             //_player.Update(gameTime);
-            
             SceneManager.CurrentScene.Update(gameTime);
             base.Update(gameTime);
         }
@@ -82,13 +95,14 @@ namespace Dungeon_Roguelike.Source
         protected override void Draw(GameTime gameTime)
         {
             GraphicsDevice.Clear(new Color(34, 34, 34));
-            
-            
+
             _spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend, SamplerState.PointClamp, DepthStencilState.None, RasterizerState.CullCounterClockwise);
+            
             
             //_player.Draw(_spriteBatch);
             SceneManager.CurrentScene.Draw(_spriteBatch);
-            
+
+
             _spriteBatch.End();
             base.Draw(gameTime);
         }

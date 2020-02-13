@@ -34,12 +34,18 @@ namespace Dungeon_Roguelike.Source
             _tileset = new int[tilesetSize.X, tilesetSize.Y];
             _tilePalette = new List<Tile>();
             _tilesetSize = tilesetSize;
+
+            for (int y = 0; y < _tileset.GetLength(1); y++)
+            for (int x = 0; x < _tileset.GetLength(0); x++)
+                    _tileset[x, y] = -1;
         }
 
         public override void LoadContent(ContentManager contentManager)
         {
+            base.LoadContent(contentManager);
             _cursorTile = new TiledSprite(TilesetManager.GetTileset(_tilesetName), Vector2.Zero, _spriteScale, _tilesetIndex);
             _tilesetTile = new TiledSprite(TilesetManager.GetTileset(_tilesetName), Vector2.Zero, _spriteScale, _tilesetIndex);
+            this.Canvas.UIElements[0].OnMouseClick = SaveTilemap;
         }
 
         public int RoundToMultiplication(int number, int multiplication, bool asCount = false)
@@ -56,6 +62,7 @@ namespace Dungeon_Roguelike.Source
         
         public override void Update(GameTime gameTime)
         {
+            base.Update(gameTime);
             _mouseState = Mouse.GetState();
             _mousePosition = _mouseState.Position;
             _snappedMousePosition = new Point(
@@ -95,7 +102,7 @@ namespace Dungeon_Roguelike.Source
             {
                 AddToPalette();
                 _tileset[tilesetPosition.X, tilesetPosition.Y] = GetIDFromPalette(_tilesetIndex);
-              DebugTileset(_tileset);
+//                DebugTileset(_tileset);
             }
         }
 
@@ -159,28 +166,30 @@ namespace Dungeon_Roguelike.Source
         {
             Tilemap tilemap = new Tilemap
             {
-                Name = "Test Tilemap",
+                Name = "Test Tilemap 2",
                 Size = _tilesetSize.ToVector2(),
                 TilePalette = _tilePalette.ToArray(),
                 Tileset = _tileset
             };
             
             string json = JsonConvert.SerializeObject(tilemap);
-            File.WriteAllText("./Content/Tilemap.json", json);
+            File.WriteAllText("./Content/Tilemap2.json", json);
         }
         
         public override void Draw(SpriteBatch spriteBatch)
         {
-            
             for (int y = 0; y < _tileset.GetLength(1); y++)
                 for (int x = 0; x < _tileset.GetLength(0); x++)
                 {
+                    if(_tileset[x, y] == -1) continue;
+                    
                      _tilesetTile.SetPosition(new Vector2(x, y)*_tilesetTile.TileWidth);
                      _tilesetTile.TileIndex = GetTilesetIndexFromPalette(_tileset[x, y]);
                      _tilesetTile.Draw(spriteBatch);
                 }
             
             _cursorTile.Draw(spriteBatch);
+            Canvas.Draw(spriteBatch);
         }
     }
 }

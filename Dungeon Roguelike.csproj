@@ -69,6 +69,10 @@
     <Compile Include="Source\TilesetSystem\Tile.cs" />
     <Compile Include="Source\TilesetSystem\Tileset.cs" />
     <Compile Include="Source\TilesetSystem\TilesetsManager.cs" />
+    <Compile Include="Source\UI\Button.cs" />
+    <Compile Include="Source\UI\Canvas.cs" />
+    <Compile Include="Source\UI\Text.cs" />
+    <Compile Include="Source\UI\UIElement.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="MonoGame.Framework">
