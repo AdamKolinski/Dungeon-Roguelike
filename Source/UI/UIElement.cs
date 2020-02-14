@@ -16,10 +16,16 @@ namespace Dungeon_Roguelike.Source.UI
             Rect = new Rectangle(position, size);
         }
 
-        public Point Position { get; }
-        public Point Size { get; }
-        public Rectangle Rect { get; }
+        public Point Position { get; protected set; }
+        public Point Size { get; protected set; }
+        public Rectangle Rect { get; protected set; }
 
+        public virtual void SetPosition(Point position)
+        {
+            Position = position;
+            Rect = new Rectangle(position, Size);
+        }
+        
         public bool IsMouseOver()
         {
             Point mousePos = Input.MousePosition;

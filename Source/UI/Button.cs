@@ -10,6 +10,7 @@ namespace Dungeon_Roguelike.Source.UI
         private Texture2D _backgroundTexture;
         private string _backgroundTextureName;
         public Text Text;
+        public string MouseOverText, NormalText;
         public Color BackgroundColor;
         
         public Button(Point position, Point size, string backgroundTexture, string text) : base(position, size)
@@ -17,6 +18,14 @@ namespace Dungeon_Roguelike.Source.UI
             _backgroundTextureName = backgroundTexture;
             BackgroundColor = Color.White;
             Text = new Text(position, "Arial", text);
+            NormalText = text;
+            MouseOverText = text;
+        }
+
+        public override void SetPosition(Point position)
+        {
+            base.SetPosition(position);
+            Text.SetPosition(position);
         }
 
         public override void LoadContent(ContentManager contentManager)
@@ -29,19 +38,20 @@ namespace Dungeon_Roguelike.Source.UI
         {
             if (IsMouseOver())
             {
-                Text.text = "Mouse Over!";
+                Text.text = MouseOverText;
+                Text.Color = Color.White;
                 BackgroundColor = Color.CornflowerBlue;
                 if(Input.IsMouseButtonDown(0, true)) Input.UiClicked = true;
             }
             else
             {
-                Text.text = "Text";
+                Text.text = NormalText;
+                Text.Color = Color.Black;
                 BackgroundColor = Color.White;
             }
 
             if (IsClicked())
             {
-                Text.text = "Im clicked!";
                 BackgroundColor = Color.Black;
                 OnMouseClick();
             }

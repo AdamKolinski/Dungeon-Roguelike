@@ -43,12 +43,14 @@ namespace Dungeon_Roguelike.Source
             
             
             Text text = new Text(new Point(0,0), "Arial", "Hello World!");
-            Button button = new Button(new Point(0, 100), new Point(150, 50), "pixel", "Button")
+            Button button = new Button(new Point(0, 100), new Point(100, 25), "pixel", "Save")
             {
                 Text = {Color = Color.Black}
             };
+            
+            button.SetPosition(new Point((int)ScreenWidth-button.Size.X-button.Size.Y, button.Size.Y));
 
-            Scene levelEditor = new LevelEditor("Level Editor", "tileset", new Point(20, 15), new Vector2(4, 4));
+            Scene levelEditor = new LevelEditor("Level Editor", "tileset", new Point(20, 12), new Vector2(4, 4));
             Scene testScene = new Scene("Level01", tilemap);
             
             Canvas testCanvas = new Canvas();
@@ -72,7 +74,7 @@ namespace Dungeon_Roguelike.Source
             Helpers.pixel = Content.Load<Texture2D>("pixel");
             
             TilesetManager.CreateTileset("tileset", Content.Load<Texture2D>("jawbreaker"), 5, 8);
-            SceneManager.LoadScene("Level01");
+            SceneManager.LoadScene("Level Editor");
             //_player = new Player(Content.Load<Texture2D>("characters"), new Vector2(100, 100), new Vector2(2, 2), 9, 8, 0);
         }
         
