@@ -29,7 +29,7 @@ namespace Dungeon_Roguelike.Source.Sprites
         }
 
         
-        public TiledSprite(TilesetTexture tilesetTexture, Vector2 position, Vector2 scale, int tileIndex) : base()
+        public TiledSprite(TilesetTexture tilesetTexture, Vector2 scale, int tileIndex) : base()
         {
             _texture = tilesetTexture.Tex;
             _scale = scale;
@@ -77,7 +77,7 @@ namespace Dungeon_Roguelike.Source.Sprites
         public override void Draw(SpriteBatch spriteBatch)
         {
             if(!_multiTiled)
-                spriteBatch.Draw(_texture, new Rectangle((int)_position.X, (int)_position.Y, (int)_tileWidth, (int)_tileHeight), new Rectangle((int)(_tileWidth/_scale.X * (TileIndex % Columns)), y: (int)(_tileHeight/_scale.Y *(TileIndex / Columns)), width: (int)(_tileWidth/_scale.X), height: (int)(_tileHeight/_scale.Y)),  Color.White, 0, Vector2.Zero,  s, 0);
+                spriteBatch.Draw(_texture, Rect, new Rectangle((int)(_tileWidth/_scale.X * (TileIndex % Columns)), y: (int)(_tileHeight/_scale.Y *(TileIndex / Columns)), width: (int)(_tileWidth/_scale.X), height: (int)(_tileHeight/_scale.Y)),  Color.White, 0, Vector2.Zero,  s, 0);
 
             if (_multiTiled)
             {

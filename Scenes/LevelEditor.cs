@@ -43,8 +43,8 @@ namespace Dungeon_Roguelike.Source
         public override void LoadContent(ContentManager contentManager)
         {
             base.LoadContent(contentManager);
-            _cursorTile = new TiledSprite(TilesetManager.GetTileset(_tilesetName), Vector2.Zero, _spriteScale, _tilesetIndex);
-            _tilesetTile = new TiledSprite(TilesetManager.GetTileset(_tilesetName), Vector2.Zero, _spriteScale, _tilesetIndex);
+            _cursorTile = new TiledSprite(TilesetManager.GetTileset(_tilesetName), _spriteScale, _tilesetIndex);
+            _tilesetTile = new TiledSprite(TilesetManager.GetTileset(_tilesetName), _spriteScale, _tilesetIndex);
             this.Canvas.UIElements[0].OnMouseClick = SaveTilemap;
         }
 

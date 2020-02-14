@@ -24,6 +24,7 @@ namespace Dungeon_Roguelike.Source.Sprites
         public void SetPosition(Vector2 position)
         {
             _position = position;
+            Rect.Location = position.ToPoint();
         }
 
         public Sprite(Texture2D texture, Vector2 position)

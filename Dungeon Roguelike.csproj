@@ -71,6 +71,8 @@
     <Compile Include="Source\TilesetSystem\TilesetsManager.cs" />
     <Compile Include="Source\UI\Button.cs" />
     <Compile Include="Source\UI\Canvas.cs" />
+    <Compile Include="Source\UI\IListViewElement.cs" />
+    <Compile Include="Source\UI\ListView.cs" />
     <Compile Include="Source\UI\Text.cs" />
     <Compile Include="Source\UI\UIElement.cs" />
   </ItemGroup>
