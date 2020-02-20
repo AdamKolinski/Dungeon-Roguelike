@@ -1,5 +1,6 @@
 ﻿using Dungeon_Roguelike.Source.UI;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 
 namespace Dungeon_Roguelike.Source.Sprites
@@ -32,6 +33,7 @@ namespace Dungeon_Roguelike.Source.Sprites
         {
             Rect = new Rectangle(Position.ToPoint(), size.ToPoint());
         }
+        
 
         public Sprite(Texture2D texture, Vector2 position)
         {
@@ -67,6 +69,10 @@ namespace Dungeon_Roguelike.Source.Sprites
         public virtual void Draw(SpriteBatch spriteBatch)
         {
             spriteBatch.Draw(_texture, Rect, Color.White);
+        }
+
+        public void LoadContent(ContentManager contentManager)
+        {
         }
     }
 }

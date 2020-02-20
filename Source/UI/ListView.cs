@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using Dungeon_Roguelike.Source.InputSystem;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
@@ -19,14 +20,22 @@ namespace Dungeon_Roguelike.Source.UI
 
         public override void LoadContent(ContentManager contentManager)
         {
-            
+            foreach (IListViewElement element in UIElements)
+            {
+                element.LoadContent(contentManager);
+            }
         }
 
         public override void Update(GameTime gameTime)
         {
             if (IsPressed())
             {
-                Console.WriteLine("List View is pressed");
+                Position += Input.mouseTranslation;
+            }
+            
+            foreach (IListViewElement element in UIElements)
+            {
+                element.Update(gameTime);
             }
         }
 

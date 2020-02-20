@@ -10,6 +10,7 @@ namespace Dungeon_Roguelike.Source.InputSystem
         private static KeyboardState _currentKeyboardState, _previousKeyboardState;
         private static MouseState _currentMouseState, _previousMouseState;
         public static bool UiClicked;
+        public static Point mouseTranslation;
         
         public static Point MousePosition => _currentMouseState.Position;
 
@@ -104,6 +105,8 @@ namespace Dungeon_Roguelike.Source.InputSystem
 
             _previousMouseState = _currentMouseState;
             _currentMouseState = Mouse.GetState();
+
+            mouseTranslation = _currentMouseState.Position - _previousMouseState.Position;
         }
         
     }

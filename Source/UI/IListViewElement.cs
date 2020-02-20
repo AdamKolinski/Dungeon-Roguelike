@@ -1,5 +1,6 @@
 ﻿using Dungeon_Roguelike.Source.Sprites;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 
 namespace Dungeon_Roguelike.Source.UI
@@ -9,5 +10,7 @@ namespace Dungeon_Roguelike.Source.UI
         void SetPosition(Vector2 position);
         void SetSize(Vector2 size);
         void Draw(SpriteBatch spriteBatch);
+        void LoadContent(ContentManager contentManager);
+        void Update(GameTime gameTime);
     }
 }

@@ -5,7 +5,7 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace Dungeon_Roguelike.Source.UI
 {
-    public class Button : UIElement
+    public class Button : UIElement, IListViewElement
     {
         private Texture2D _backgroundTexture;
         private string _backgroundTextureName;
@@ -55,6 +55,19 @@ namespace Dungeon_Roguelike.Source.UI
                 BackgroundColor = Color.Black;
                 OnMouseClick();
             }
+        }
+
+        public void SetPosition(Vector2 position)
+        {
+            Position = position.ToPoint();
+            Rect = new Rectangle(Position, Size);
+            Text.Position = Position;
+        }
+
+        public void SetSize(Vector2 size)
+        {
+            Size = size.ToPoint();
+            Rect = new Rectangle(Position, Size);
         }
 
         public override void Draw(SpriteBatch spriteBatch)

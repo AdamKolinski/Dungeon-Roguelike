@@ -10,6 +10,8 @@ namespace Dungeon_Roguelike.Source.UI
         private readonly string _fontName;
         public string text { get; set; }
         public Color Color { get; set; }
+        
+        public Point Position { get; set; }
 
         public Text(Point position, string font, string text, Point size = default(Point)) : base(position, size)
         {
