@@ -61,6 +61,29 @@ namespace Dungeon_Roguelike.Source.InputSystem
             return !UiClicked && toReturn;
         }
         
+        public static bool IsMouseButtonPressed(int button, bool ignoreUi = false)
+        {
+            bool toReturn;
+            switch (button)
+            {
+                case 0:
+                    toReturn = _currentMouseState.LeftButton == ButtonState.Pressed;
+                    break;
+                case 1:
+                    toReturn = _currentMouseState.RightButton == ButtonState.Pressed;
+                    break;
+                default:
+                    toReturn = false;
+                    break;
+            }
+
+            if (ignoreUi)
+            {
+                return toReturn;
+            }
+
+            return !UiClicked && toReturn;
+        }
         public static void Update()
         {
             UiClicked = false;

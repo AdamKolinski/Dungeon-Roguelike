@@ -50,6 +50,20 @@ namespace Dungeon_Roguelike.Source.UI
             return false;
         }
 
+        public bool IsPressed()
+        {
+            if (IsMouseOver())
+            {
+                if (Input.IsMouseButtonPressed(0, true))
+                {
+                    Input.UiClicked = true;
+                    return true;
+                }
+            }
+
+            return false;
+        }
+
         public abstract void LoadContent(ContentManager contentManager);
         public abstract void Update(GameTime gameTime);
         public abstract void Draw(SpriteBatch spriteBatch);

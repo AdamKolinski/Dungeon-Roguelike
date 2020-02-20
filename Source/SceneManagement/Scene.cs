@@ -29,7 +29,7 @@ namespace Dungeon_Roguelike.Source.SceneManagement
         }
         public virtual void Draw(SpriteBatch spriteBatch)
         {
-            Tilemap.Draw(spriteBatch);
+            Tilemap?.Draw(spriteBatch);
             Canvas.Draw(spriteBatch);
         }
     }

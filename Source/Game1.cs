@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using Dungeon_Roguelike.Scenes;
 using Dungeon_Roguelike.Source.InputSystem;
 using Dungeon_Roguelike.Source.SceneManagement;
 using Dungeon_Roguelike.Source.Sprites;
@@ -60,6 +61,7 @@ namespace Dungeon_Roguelike.Source
             SceneManager.ContentManager = Content;
             SceneManager.AddScene(levelEditor);
             SceneManager.AddScene(testScene);
+            SceneManager.AddScene(new UITest("Test"));
 
             testScene.Canvas = testCanvas;
             levelEditor.Canvas = testCanvas;
@@ -74,7 +76,7 @@ namespace Dungeon_Roguelike.Source
             Helpers.pixel = Content.Load<Texture2D>("pixel");
             
             TilesetManager.CreateTileset("tileset", Content.Load<Texture2D>("jawbreaker"), 5, 8);
-            SceneManager.LoadScene("Level Editor");
+            SceneManager.LoadScene("Test");
             //_player = new Player(Content.Load<Texture2D>("characters"), new Vector2(100, 100), new Vector2(2, 2), 9, 8, 0);
         }
         

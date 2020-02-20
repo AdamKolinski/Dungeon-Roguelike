@@ -1,9 +1,10 @@
-﻿using Microsoft.Xna.Framework;
+﻿using Dungeon_Roguelike.Source.UI;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
 namespace Dungeon_Roguelike.Source.Sprites
 {
-    public class Sprite
+    public class Sprite : IListViewElement
     {
         protected SpriteEffects s = SpriteEffects.FlipHorizontally;
         protected Texture2D _texture;
@@ -25,6 +26,11 @@ namespace Dungeon_Roguelike.Source.Sprites
         {
             _position = position;
             Rect.Location = position.ToPoint();
+        }
+
+        public void SetSize(Vector2 size)
+        {
+            Rect = new Rectangle(Position.ToPoint(), size.ToPoint());
         }
 
         public Sprite(Texture2D texture, Vector2 position)
@@ -60,8 +66,7 @@ namespace Dungeon_Roguelike.Source.Sprites
         
         public virtual void Draw(SpriteBatch spriteBatch)
         {
-            spriteBatch.Draw(_texture, new Rectangle((int)_position.X, (int)_position.Y, (int)(_texture.Width*_scale.X), (int)(_texture.Height*_scale.Y)), Color.White);
-            
+            spriteBatch.Draw(_texture, Rect, Color.White);
         }
     }
 }
