@@ -9,10 +9,10 @@ namespace Dungeon_Roguelike.Source.InputSystem
         private static readonly List<Axis> Axes = new List<Axis>();
         private static KeyboardState _currentKeyboardState, _previousKeyboardState;
         private static MouseState _currentMouseState, _previousMouseState;
-        public static bool UiClicked;
-        public static Point mouseTranslation;
+        public static bool UIClicked;
+        public static Point MouseTranslation;
         
-        public static Point MousePosition => _currentMouseState.Position;
+        public static Point MousePosition => Cursor.Position;
 
         public static void Initialize()
         {
@@ -59,7 +59,33 @@ namespace Dungeon_Roguelike.Source.InputSystem
                 return toReturn;
             }
 
-            return !UiClicked && toReturn;
+            return !UIClicked && toReturn;
+        }
+        
+        public static bool IsMouseButtonUp(int button, bool ignoreUi = false)
+        {
+            bool toReturn;
+            switch (button)
+            {
+                case 0:
+                    toReturn = _currentMouseState.LeftButton != ButtonState.Pressed &&
+                               _previousMouseState.LeftButton == ButtonState.Pressed;
+                    break;
+                case 1:
+                    toReturn = _currentMouseState.RightButton != ButtonState.Pressed &&
+                               _previousMouseState.RightButton == ButtonState.Pressed;
+                    break;
+                default:
+                    toReturn = false;
+                    break;
+            }
+
+            if (ignoreUi)
+            {
+                return toReturn;
+            }
+
+            return !UIClicked && toReturn;
         }
         
         public static bool IsMouseButtonPressed(int button, bool ignoreUi = false)
@@ -83,11 +109,11 @@ namespace Dungeon_Roguelike.Source.InputSystem
                 return toReturn;
             }
 
-            return !UiClicked && toReturn;
+            return !UIClicked && toReturn;
         }
         public static void Update()
         {
-            UiClicked = false;
+            UIClicked = false;
             GetState();
             foreach (var axis in Axes)
             {
@@ -104,9 +130,9 @@ namespace Dungeon_Roguelike.Source.InputSystem
             _currentKeyboardState = Keyboard.GetState();
 
             _previousMouseState = _currentMouseState;
-            _currentMouseState = Mouse.GetState();
-
-            mouseTranslation = _currentMouseState.Position - _previousMouseState.Position;
+            _currentMouseState = Cursor.MouseState;
+            
+            MouseTranslation = _currentMouseState.Position - _previousMouseState.Position;
         }
         
     }

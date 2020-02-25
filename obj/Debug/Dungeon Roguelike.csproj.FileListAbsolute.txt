@@ -25,3 +25,5 @@ C:\MonoGame Workspace\Dungeon Roguelike\Dungeon Roguelike\bin\DesktopGL\AnyCPU\D
 C:\MonoGame Workspace\Dungeon Roguelike\Dungeon Roguelike\bin\DesktopGL\AnyCPU\Debug\Content\jawbreaker.xnb
 C:\MonoGame Workspace\Dungeon Roguelike\Dungeon Roguelike\bin\DesktopGL\AnyCPU\Debug\Content\Arial.xnb
 C:\MonoGame Workspace\Dungeon Roguelike\Dungeon Roguelike\bin\DesktopGL\AnyCPU\Debug\Content\pixel.xnb
+C:\MonoGame Workspace\Dungeon Roguelike\Dungeon Roguelike\bin\DesktopGL\AnyCPU\Debug\Content\cursor5.xnb
+C:\MonoGame Workspace\Dungeon Roguelike\Dungeon Roguelike\bin\DesktopGL\AnyCPU\Debug\Content\test.xnb

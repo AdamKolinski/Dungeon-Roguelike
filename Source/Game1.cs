@@ -29,8 +29,11 @@ namespace Dungeon_Roguelike.Source
         {
             _graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
-            IsMouseVisible = true;
+            IsMouseVisible = false;
             IsFixedTimeStep = false;
+            _graphics.PreferredBackBufferWidth = 1080;
+            _graphics.PreferredBackBufferHeight = 720;
+            _graphics.ApplyChanges();
         }
         
         
@@ -38,6 +41,8 @@ namespace Dungeon_Roguelike.Source
         {
             ScreenWidth = _graphics.PreferredBackBufferWidth;
             ScreenHeight = _graphics.PreferredBackBufferHeight;
+            
+            Cursor.Size = new Point(24, 24);
             
             string tmp = File.ReadAllText("./Content/Tilemap2.json");
             Tilemap tilemap = JsonConvert.DeserializeObject<Tilemap>(tmp);
@@ -51,7 +56,7 @@ namespace Dungeon_Roguelike.Source
             
             button.SetPosition(new Point((int)ScreenWidth-button.Size.X-button.Size.Y, button.Size.Y));
 
-            Scene levelEditor = new LevelEditor("Level Editor", "tileset", new Point(20, 12), new Vector2(4, 4));
+            Scene levelEditor = new LevelEditor("Level Editor", "tileset", new Point(20, 12), new Point(4, 4));
             Scene testScene = new Scene("Level01", tilemap);
             
             Canvas testCanvas = new Canvas();
@@ -65,7 +70,6 @@ namespace Dungeon_Roguelike.Source
 
             testScene.Canvas = testCanvas;
             levelEditor.Canvas = testCanvas;
-
             Input.Initialize();
             base.Initialize();
         }
@@ -74,9 +78,12 @@ namespace Dungeon_Roguelike.Source
         {
             _spriteBatch = new SpriteBatch(GraphicsDevice);
             Helpers.pixel = Content.Load<Texture2D>("pixel");
-            
+
+            Cursor.Tex = Content.Load<Texture2D>("test");
+
             TilesetManager.CreateTileset("tileset", Content.Load<Texture2D>("jawbreaker"), 5, 8);
             SceneManager.LoadScene("Test");
+            Mouse.SetCursor(MouseCursor.FromTexture2D(Content.Load<Texture2D>("test"), 0, 0));
             //_player = new Player(Content.Load<Texture2D>("characters"), new Vector2(100, 100), new Vector2(2, 2), 9, 8, 0);
         }
         
@@ -90,6 +97,7 @@ namespace Dungeon_Roguelike.Source
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
             
+            Cursor.Update(gameTime);
             Input.Update();
             //_player.Update(gameTime);
             SceneManager.CurrentScene.Update(gameTime);
@@ -105,9 +113,17 @@ namespace Dungeon_Roguelike.Source
             
             //_player.Draw(_spriteBatch);
             SceneManager.CurrentScene.Draw(_spriteBatch);
-
-
+            
             _spriteBatch.End();
+            
+            
+            SpriteBatch cursorBatch = new SpriteBatch(GraphicsDevice);
+            RasterizerState r = new RasterizerState { MultiSampleAntiAlias = true };
+            
+            cursorBatch.Begin(samplerState: SamplerState.PointClamp , rasterizerState: r);
+            Cursor.Draw(cursorBatch);
+            cursorBatch.End();
+            
             base.Draw(gameTime);
         }
     }

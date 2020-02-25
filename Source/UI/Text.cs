@@ -31,7 +31,7 @@ namespace Dungeon_Roguelike.Source.UI
 
         public override void Draw(SpriteBatch spriteBatch)
         {
-            spriteBatch.DrawString(_font, text, Position.ToVector2(), Color);
+            spriteBatch.DrawString(_font, text, Rect.Location.ToVector2(), Color);
         }
     }
 }

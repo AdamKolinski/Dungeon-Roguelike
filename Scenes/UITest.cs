@@ -18,9 +18,9 @@ namespace Dungeon_Roguelike.Scenes
 
         public override void LoadContent(ContentManager contentManager)
         {
-            listView.UIElements.Add(new Button(Point.Zero, Point.Zero, "pixel", "OK"));
+            listView.UIElements.Add(new Button(Point.Zero, Point.Zero, "pixel", "Test"));
             
-            Sprite tmpSprite = new Sprite(contentManager.Load<Texture2D>("pixel"), Vector2.Zero);
+            Sprite tmpSprite = new Sprite(contentManager.Load<Texture2D>("pixel"), Point.Zero);
             for (int i = 0; i < 11; i++)
                 listView.UIElements.Add(tmpSprite);
 

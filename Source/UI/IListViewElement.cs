@@ -7,7 +7,7 @@ namespace Dungeon_Roguelike.Source.UI
 {
     public interface IListViewElement
     {
-        void SetPosition(Vector2 position);
+        void SetPosition(Point position);
         void SetSize(Vector2 size);
         void Draw(SpriteBatch spriteBatch);
         void LoadContent(ContentManager contentManager);

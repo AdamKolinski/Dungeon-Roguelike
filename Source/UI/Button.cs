@@ -41,7 +41,7 @@ namespace Dungeon_Roguelike.Source.UI
                 Text.text = MouseOverText;
                 Text.Color = Color.White;
                 BackgroundColor = Color.CornflowerBlue;
-                if(Input.IsMouseButtonDown(0, true)) Input.UiClicked = true;
+                if(Input.IsMouseButtonDown(0, true)) Input.UIClicked = true;
             }
             else
             {
@@ -50,18 +50,15 @@ namespace Dungeon_Roguelike.Source.UI
                 BackgroundColor = Color.White;
             }
 
-            if (IsClicked())
+            if (IsPressed())
             {
                 BackgroundColor = Color.Black;
+            }
+
+            if (IsClicked())
+            {
                 OnMouseClick();
             }
-        }
-
-        public void SetPosition(Vector2 position)
-        {
-            Position = position.ToPoint();
-            Rect = new Rectangle(Position, Size);
-            Text.Position = Position;
         }
 
         public void SetSize(Vector2 size)

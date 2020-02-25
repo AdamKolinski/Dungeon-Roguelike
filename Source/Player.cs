@@ -10,23 +10,23 @@ namespace Dungeon_Roguelike.Source
         private float _movementSpeed = 10; 
         public override void Update(GameTime gameTime)
         {
-            _position += new Vector2(Input.GetAxis("Horizontal"), -Input.GetAxis("Vertical")) * _movementSpeed * gameTime.ElapsedGameTime.Milliseconds/100f;
+            _position += (new Vector2(Input.GetAxis("Horizontal"), -Input.GetAxis("Vertical")) * _movementSpeed * gameTime.ElapsedGameTime.Milliseconds/100f).ToPoint();
         }
 
         #region Constructors
-        public Player(Texture2D texture, Vector2 position, int rows, int columns, int tileIndex) : base(texture, position, rows, columns, tileIndex)
+        public Player(Texture2D texture, Point position, int rows, int columns, int tileIndex) : base(texture, position, rows, columns, tileIndex)
         {
         }
 
-        public Player(Texture2D texture, Vector2 position, Vector2 scale, int columns, int rows, int tileIndex) : base(texture, position, scale, columns, rows, tileIndex)
+        public Player(Texture2D texture, Point position, Point scale, int columns, int rows, int tileIndex) : base(texture, position, scale, columns, rows, tileIndex)
         {
         }
 
-        public Player(Texture2D texture, Vector2 position, int rows, int columns, int[,] tileIndexes) : base(texture, position, rows, columns, tileIndexes)
+        public Player(Texture2D texture, Point position, int rows, int columns, int[,] tileIndexes) : base(texture, position, rows, columns, tileIndexes)
         {
         }
 
-        public Player(Texture2D texture, Vector2 position, Vector2 scale, int columns, int rows, int[,] tileIndexes) : base(texture, position, scale, columns, rows, tileIndexes)
+        public Player(Texture2D texture, Point position, Point scale, int columns, int rows, int[,] tileIndexes) : base(texture, position, scale, columns, rows, tileIndexes)
         {
         }
         #endregion

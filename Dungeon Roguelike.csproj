@@ -48,6 +48,7 @@
     <Compile Include="Source\Animation\Animation.cs" />
     <Compile Include="Source\Animation\Animator.cs" />
     <Compile Include="Source\Camera.cs" />
+    <Compile Include="Source\Cursor.cs" />
     <Compile Include="Source\Game1.cs" />
     <Compile Include="Source\Helpers.cs" />
     <Compile Include="Source\IDestructible.cs" />

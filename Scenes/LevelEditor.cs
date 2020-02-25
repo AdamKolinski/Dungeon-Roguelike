@@ -24,9 +24,9 @@ namespace Dungeon_Roguelike.Source
 
         private Point _tilesetSize;
         private readonly string _tilesetName;
-        private readonly Vector2 _spriteScale;
+        private readonly Point _spriteScale;
 
-        public LevelEditor(string sceneName, string tilesetName, Point tilesetSize, Vector2 spriteScale) : base(sceneName)
+        public LevelEditor(string sceneName, string tilesetName, Point tilesetSize, Point spriteScale) : base(sceneName)
         {
             _tilesetName = tilesetName;
             _spriteScale = spriteScale;
@@ -74,7 +74,7 @@ namespace Dungeon_Roguelike.Source
             if (_mouseState.ScrollWheelValue < _prevMouseState.ScrollWheelValue)
                 _tilesetIndex--;
             
-            _cursorTile.SetPosition(_snappedMousePosition.ToVector2());
+            _cursorTile.SetPosition(_snappedMousePosition);
             _cursorTile.TileIndex = _tilesetIndex;
             
             //Console.WriteLine($"TilesetIndex: {_tilesetIndex}");
@@ -183,7 +183,7 @@ namespace Dungeon_Roguelike.Source
                 {
                     if(_tileset[x, y] == -1) continue;
                     
-                     _tilesetTile.SetPosition(new Vector2(x, y)*_tilesetTile.TileWidth);
+                     _tilesetTile.SetPosition((new Vector2(x, y)*_tilesetTile.TileWidth).ToPoint());
                      _tilesetTile.TileIndex = GetTilesetIndexFromPalette(_tileset[x, y]);
                      _tilesetTile.Draw(spriteBatch);
                 }

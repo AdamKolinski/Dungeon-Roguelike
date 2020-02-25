@@ -3,6 +3,7 @@ using Dungeon_Roguelike.Source.InputSystem;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework.Input;
 
 namespace Dungeon_Roguelike.Source.UI
 {
@@ -15,6 +16,8 @@ namespace Dungeon_Roguelike.Source.UI
             Size = size;
             Rect = new Rectangle(position, size);
         }
+
+        protected bool _isPressed;
 
         public Point Position { get; protected set; }
         public Point Size { get; protected set; }
@@ -40,25 +43,27 @@ namespace Dungeon_Roguelike.Source.UI
         {
             if (IsMouseOver())
             {
-                if (Input.IsMouseButtonDown(0, true))
+                if (Input.IsMouseButtonUp(0, true))
                 {
-                    Input.UiClicked = true;
                     return true;
                 }
             }
-
             return false;
         }
-
-        public bool IsPressed()
+        
+        protected bool IsPressed()
         {
-            if (IsMouseOver())
+            if (IsMouseOver() || _isPressed)
             {
                 if (Input.IsMouseButtonPressed(0, true))
                 {
-                    Input.UiClicked = true;
+                    _isPressed = true;
+                    Input.UIClicked = true;
                     return true;
                 }
+
+                _isPressed = false;
+                return false;
             }
 
             return false;

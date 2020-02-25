@@ -4,6 +4,7 @@ using Dungeon_Roguelike.Source.InputSystem;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework.Input;
 
 namespace Dungeon_Roguelike.Source.UI
 {
@@ -30,9 +31,9 @@ namespace Dungeon_Roguelike.Source.UI
         {
             if (IsPressed())
             {
-                Position += Input.mouseTranslation;
+                SetPosition(Position+Input.MouseTranslation);
             }
-            
+
             foreach (IListViewElement element in UIElements)
             {
                 element.Update(gameTime);
@@ -44,11 +45,10 @@ namespace Dungeon_Roguelike.Source.UI
             Point currentPosition = Position + Spacing;
             int currentElementIndex = 0;
             
-            spriteBatch.Draw(Helpers.pixel, new Rectangle(Position, Size), Color.Gray);
-            
+            spriteBatch.Draw(Helpers.pixel, Rect, Color.Gray);
             foreach (var element in UIElements)
             {
-                element.SetPosition(currentPosition.ToVector2());
+                element.SetPosition(currentPosition);
                 element.SetSize(ElementSize.ToVector2());
                 element.Draw(spriteBatch);
 

@@ -19,7 +19,7 @@ namespace Dungeon_Roguelike.Source.Sprites
         public float TileWidth => _tileWidth;
         public float TileHeight => _tileHeight;
 
-        public TiledSprite(Texture2D texture, Vector2 position, int rows, int columns, int tileIndex) : base(texture, position)
+        public TiledSprite(Texture2D texture, Point position, int rows, int columns, int tileIndex) : base(texture, position)
         {
             Rows = rows;
             Columns = columns;
@@ -29,7 +29,7 @@ namespace Dungeon_Roguelike.Source.Sprites
         }
 
         
-        public TiledSprite(TilesetTexture tilesetTexture, Vector2 scale, int tileIndex) : base()
+        public TiledSprite(TilesetTexture tilesetTexture, Point scale, int tileIndex) : base()
         {
             _texture = tilesetTexture.Tex;
             _scale = scale;
@@ -39,7 +39,7 @@ namespace Dungeon_Roguelike.Source.Sprites
             _multiTiled = false;
             Initialize();
         }
-        public TiledSprite(Texture2D texture, Vector2 position, Vector2 scale, int columns, int rows, int tileIndex) : base(texture, position, scale)
+        public TiledSprite(Texture2D texture, Point position, Point scale, int columns, int rows, int tileIndex) : base(texture, position, scale)
         {
             Rows = rows;
             Columns = columns;
@@ -48,7 +48,7 @@ namespace Dungeon_Roguelike.Source.Sprites
             Initialize();
         }
         
-        public TiledSprite(Texture2D texture, Vector2 position, int rows, int columns, int[,] tileIndexes) : base(texture, position)
+        public TiledSprite(Texture2D texture, Point position, int rows, int columns, int[,] tileIndexes) : base(texture, position)
         {
             Rows = rows;
             Columns = columns;
@@ -57,7 +57,7 @@ namespace Dungeon_Roguelike.Source.Sprites
             Initialize();
         }
 
-        public TiledSprite(Texture2D texture, Vector2 position, Vector2 scale, int columns, int rows, int[,] tileIndexes) : base(texture, position, scale)
+        public TiledSprite(Texture2D texture, Point position, Point scale, int columns, int rows, int[,] tileIndexes) : base(texture, position, scale)
         {
             Rows = rows;
             Columns = columns;
@@ -71,7 +71,7 @@ namespace Dungeon_Roguelike.Source.Sprites
             s = SpriteEffects.None;
             _tileWidth = _texture.Width * _scale.X / Columns;
             _tileHeight = _texture.Height * _scale.Y / Rows;
-            Rect = new Rectangle(_position.ToPoint(), new Point((int)_tileWidth, (int)_tileHeight));
+            Rect = new Rectangle(_position, new Point((int)_tileWidth, (int)_tileHeight));
         }
 
         public override void Draw(SpriteBatch spriteBatch)
