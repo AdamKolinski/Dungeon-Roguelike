@@ -24,9 +24,9 @@ namespace Dungeon_Roguelike.Source
 
         private Point _tilesetSize;
         private readonly string _tilesetName;
-        private readonly Vector2 _spriteScale;
+        private readonly Point _spriteScale;
 
-        public LevelEditor(string sceneName, string tilesetName, Point tilesetSize, Vector2 spriteScale) : base(sceneName)
+        public LevelEditor(string sceneName, string tilesetName, Point tilesetSize, Point spriteScale) : base(sceneName)
         {
             _tilesetName = tilesetName;
             _spriteScale = spriteScale;
@@ -34,12 +34,18 @@ namespace Dungeon_Roguelike.Source
             _tileset = new int[tilesetSize.X, tilesetSize.Y];
             _tilePalette = new List<Tile>();
             _tilesetSize = tilesetSize;
+
+            for (int y = 0; y < _tileset.GetLength(1); y++)
+            for (int x = 0; x < _tileset.GetLength(0); x++)
+                    _tileset[x, y] = -1;
         }
 
         public override void LoadContent(ContentManager contentManager)
         {
-            _cursorTile = new TiledSprite(TilesetManager.GetTileset(_tilesetName), Vector2.Zero, _spriteScale, _tilesetIndex);
-            _tilesetTile = new TiledSprite(TilesetManager.GetTileset(_tilesetName), Vector2.Zero, _spriteScale, _tilesetIndex);
+            base.LoadContent(contentManager);
+            _cursorTile = new TiledSprite(TilesetManager.GetTileset(_tilesetName), _spriteScale, _tilesetIndex);
+            _tilesetTile = new TiledSprite(TilesetManager.GetTileset(_tilesetName), _spriteScale, _tilesetIndex);
+            this.Canvas.UIElements[0].OnMouseClick = SaveTilemap;
         }
 
         public int RoundToMultiplication(int number, int multiplication, bool asCount = false)
@@ -56,6 +62,7 @@ namespace Dungeon_Roguelike.Source
         
         public override void Update(GameTime gameTime)
         {
+            base.Update(gameTime);
             _mouseState = Mouse.GetState();
             _mousePosition = _mouseState.Position;
             _snappedMousePosition = new Point(
@@ -67,7 +74,7 @@ namespace Dungeon_Roguelike.Source
             if (_mouseState.ScrollWheelValue < _prevMouseState.ScrollWheelValue)
                 _tilesetIndex--;
             
-            _cursorTile.SetPosition(_snappedMousePosition.ToVector2());
+            _cursorTile.SetPosition(_snappedMousePosition);
             _cursorTile.TileIndex = _tilesetIndex;
             
             //Console.WriteLine($"TilesetIndex: {_tilesetIndex}");
@@ -95,7 +102,7 @@ namespace Dungeon_Roguelike.Source
             {
                 AddToPalette();
                 _tileset[tilesetPosition.X, tilesetPosition.Y] = GetIDFromPalette(_tilesetIndex);
-              DebugTileset(_tileset);
+//                DebugTileset(_tileset);
             }
         }
 
@@ -159,28 +166,30 @@ namespace Dungeon_Roguelike.Source
         {
             Tilemap tilemap = new Tilemap
             {
-                Name = "Test Tilemap",
+                Name = "Test Tilemap 2",
                 Size = _tilesetSize.ToVector2(),
                 TilePalette = _tilePalette.ToArray(),
                 Tileset = _tileset
             };
             
             string json = JsonConvert.SerializeObject(tilemap);
-            File.WriteAllText("./Content/Tilemap.json", json);
+            File.WriteAllText("./Content/Tilemap2.json", json);
         }
         
         public override void Draw(SpriteBatch spriteBatch)
         {
-            
             for (int y = 0; y < _tileset.GetLength(1); y++)
                 for (int x = 0; x < _tileset.GetLength(0); x++)
                 {
-                     _tilesetTile.SetPosition(new Vector2(x, y)*_tilesetTile.TileWidth);
+                    if(_tileset[x, y] == -1) continue;
+                    
+                     _tilesetTile.SetPosition((new Vector2(x, y)*_tilesetTile.TileWidth).ToPoint());
                      _tilesetTile.TileIndex = GetTilesetIndexFromPalette(_tileset[x, y]);
                      _tilesetTile.Draw(spriteBatch);
                 }
             
             _cursorTile.Draw(spriteBatch);
+            Canvas.Draw(spriteBatch);
         }
     }
 }

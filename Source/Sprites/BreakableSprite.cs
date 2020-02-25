@@ -13,7 +13,7 @@ namespace Dungeon_Roguelike.Source.Sprites
         }
 
         #region Constructors
-        public BreakableSprite(Texture2D texture, Vector2 position, int rows, int columns, int tileIndex) : base(texture, position, rows, columns, tileIndex)
+        public BreakableSprite(Texture2D texture, Point position, int rows, int columns, int tileIndex) : base(texture, position, rows, columns, tileIndex)
         {
             Rows = rows;
             Columns = columns;
@@ -22,7 +22,7 @@ namespace Dungeon_Roguelike.Source.Sprites
             Initialize();
         }
 
-        public BreakableSprite(Texture2D texture, Vector2 position, Vector2 scale, int columns, int rows, int tileIndex) : base(texture, position, scale, columns, rows, tileIndex)
+        public BreakableSprite(Texture2D texture, Point position, Point scale, int columns, int rows, int tileIndex) : base(texture, position, scale, columns, rows, tileIndex)
         {
             Rows = rows;
             Columns = columns;
@@ -31,7 +31,7 @@ namespace Dungeon_Roguelike.Source.Sprites
             Initialize();
         }
         
-        public BreakableSprite(Texture2D texture, Vector2 position, int rows, int columns, int[,] tileIndexes) : base(texture, position, rows, columns, tileIndexes)
+        public BreakableSprite(Texture2D texture, Point position, int rows, int columns, int[,] tileIndexes) : base(texture, position, rows, columns, tileIndexes)
         {
             Rows = rows;
             Columns = columns;
@@ -40,7 +40,7 @@ namespace Dungeon_Roguelike.Source.Sprites
             Initialize();
         }
 
-        public BreakableSprite(Texture2D texture, Vector2 position, Vector2 scale, int columns, int rows, int[,] tileIndexes) : base(texture, position, scale, columns, rows, tileIndexes)
+        public BreakableSprite(Texture2D texture, Point position, Point scale, int columns, int rows, int[,] tileIndexes) : base(texture, position, scale, columns, rows, tileIndexes)
         {
             Rows = rows;
             Columns = columns;
@@ -53,7 +53,7 @@ namespace Dungeon_Roguelike.Source.Sprites
         {
             _tileWidth = _texture.Width * Scale.X / Columns;
             _tileHeight = _texture.Height * Scale.Y / Rows;
-            Rect = new Rectangle(Position.ToPoint(), new Point((int)TileWidth, (int)TileHeight));
+            Rect = new Rectangle(Position, new Point((int)TileWidth, (int)TileHeight));
         }
         #endregion
     }

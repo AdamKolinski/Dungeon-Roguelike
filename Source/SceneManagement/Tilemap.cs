@@ -28,7 +28,7 @@ namespace Dungeon_Roguelike.Source.SceneManagement
                 if (TilesetManager.GetTileset(tile.TilesetName) != null)
                 {
                     TiledSprite paletteSprite = new TiledSprite(TilesetManager.GetTileset(tile.TilesetName),
-                        Vector2.Zero, new Vector2(4, 4), tile.TilesetIndex);
+                        new Point(4, 4), tile.TilesetIndex);
                     _spritePalette.Add(paletteSprite);
                 }
             }
@@ -57,7 +57,7 @@ namespace Dungeon_Roguelike.Source.SceneManagement
                         if (tile.ID == Tileset[x, y])
                         {
                             _spritePalette[Tileset[x, y]]
-                                .SetPosition(new Vector2(x, y) * _spritePalette[Tileset[x, y]].TileWidth);
+                                .SetPosition((new Vector2(x, y) * _spritePalette[Tileset[x, y]].TileWidth).ToPoint());
                             _spritePalette[Tileset[x, y]].Draw(spriteBatch);
                         }
                     }
