@@ -1,4 +1,5 @@
-﻿using Dungeon_Roguelike.Source.SceneManagement;
+﻿using Dungeon_Roguelike.Source;
+using Dungeon_Roguelike.Source.SceneManagement;
 using Dungeon_Roguelike.Source.Sprites;
 using Dungeon_Roguelike.Source.UI;
 using Microsoft.Xna.Framework;
@@ -18,7 +19,7 @@ namespace Dungeon_Roguelike.Scenes
 
         public override void LoadContent(ContentManager contentManager)
         {
-            listView.UIElements.Add(new Button(Point.Zero, Point.Zero, "pixel", "Test"));
+            listView.UIElements.Add(new Button(Point.Zero, Point.Zero, Helpers.pixelSprite, "Test"));
             
             Sprite tmpSprite = new Sprite(contentManager.Load<Texture2D>("pixel"), Point.Zero);
             for (int i = 0; i < 11; i++)

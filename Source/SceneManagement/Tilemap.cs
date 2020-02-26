@@ -17,6 +17,8 @@ namespace Dungeon_Roguelike.Source.SceneManagement
         private List<TiledSprite> _spritePalette;
         private bool _generatedPalette;
 
+        public List<TiledSprite> SpritePalette => _spritePalette;
+
         private void GenerateSpritePalette()
         {
             _spritePalette = new List<TiledSprite>();

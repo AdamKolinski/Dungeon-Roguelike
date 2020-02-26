@@ -4,6 +4,7 @@ using System.IO;
 using Dungeon_Roguelike.Source.InputSystem;
 using Dungeon_Roguelike.Source.SceneManagement;
 using Dungeon_Roguelike.Source.Sprites;
+using Dungeon_Roguelike.Source.UI;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
@@ -25,6 +26,7 @@ namespace Dungeon_Roguelike.Source
         private Point _tilesetSize;
         private readonly string _tilesetName;
         private readonly Point _spriteScale;
+        private ListView _tilesListView;
 
         public LevelEditor(string sceneName, string tilesetName, Point tilesetSize, Point spriteScale) : base(sceneName)
         {
@@ -38,14 +40,38 @@ namespace Dungeon_Roguelike.Source
             for (int y = 0; y < _tileset.GetLength(1); y++)
             for (int x = 0; x < _tileset.GetLength(0); x++)
                     _tileset[x, y] = -1;
+            
         }
 
         public override void LoadContent(ContentManager contentManager)
         {
-            base.LoadContent(contentManager);
+            
             _cursorTile = new TiledSprite(TilesetManager.GetTileset(_tilesetName), _spriteScale, _tilesetIndex);
             _tilesetTile = new TiledSprite(TilesetManager.GetTileset(_tilesetName), _spriteScale, _tilesetIndex);
-            this.Canvas.UIElements[0].OnMouseClick = SaveTilemap;
+            
+            
+            _tilesListView = new ListView(new Point(792, 0), new Point(288, 720));
+
+            int tmp = TilesetManager.GetTileset(_tilesetName).Columns * TilesetManager.GetTileset(_tilesetName).Rows;
+            for (int i = 0; i < tmp; i++)
+            {
+                TiledSprite tmpSprite = new TiledSprite(_tilesetTile.Texture, Point.Zero, _tilesetTile.Rows, _tilesetTile.Columns, i);
+                Button tileButton = new Button(new Point(i * 16), new Point(16, 16), tmpSprite, "");
+                var i1 = i;
+                tileButton.OnMouseClick = delegate { _tilesetIndex = i1; };
+                _tilesListView.UIElements.Add(tileButton);
+            }
+
+            Canvas.UIElements.Add(_tilesListView);
+            
+            Button button = new Button(new Point(792, 670), new Point(288, 50), Helpers.pixelSprite, "Save")
+            {
+                Text = {Color = Color.White}
+            };
+            button.OnMouseClick = SaveTilemap;
+            Canvas.UIElements.Add(button);
+            
+            base.LoadContent(contentManager);
         }
 
         public int RoundToMultiplication(int number, int multiplication, bool asCount = false)
@@ -86,7 +112,7 @@ namespace Dungeon_Roguelike.Source
                 Console.WriteLine("Tilemap saved!");
             }
             
-            if(Input.IsMouseButtonDown(0))
+            if(Input.IsMouseButtonPressed(0))
                 PlaceTile();
 
             _prevMouseState = _mouseState;

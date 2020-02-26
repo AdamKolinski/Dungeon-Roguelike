@@ -31,7 +31,7 @@ namespace Dungeon_Roguelike.Source.UI
         {
             if (IsPressed())
             {
-                SetPosition(Position+Input.MouseTranslation);
+                //SetPosition(Position+Input.MouseTranslation);
             }
 
             foreach (IListViewElement element in UIElements)

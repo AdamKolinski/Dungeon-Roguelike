@@ -1,4 +1,5 @@
 ﻿using Dungeon_Roguelike.Source.InputSystem;
+using Dungeon_Roguelike.Source.Sprites;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
@@ -12,25 +13,28 @@ namespace Dungeon_Roguelike.Source.UI
         public Text Text;
         public string MouseOverText, NormalText;
         public Color BackgroundColor;
+        public TiledSprite Background;
         
-        public Button(Point position, Point size, string backgroundTexture, string text) : base(position, size)
+        public Button(Point position, Point size, TiledSprite background, string text) : base(position, size)
         {
-            _backgroundTextureName = backgroundTexture;
             BackgroundColor = Color.White;
             Text = new Text(position, "Arial", text);
             NormalText = text;
             MouseOverText = text;
+            Background = background;
+            Background.SetPosition(position);
+            Background.SetSize(size.ToVector2());
         }
 
         public override void SetPosition(Point position)
         {
             base.SetPosition(position);
+            Background.SetPosition(position);
             Text.SetPosition(position);
         }
 
         public override void LoadContent(ContentManager contentManager)
         {
-            _backgroundTexture = contentManager.Load<Texture2D>(_backgroundTextureName);
             Text.LoadContent(contentManager);
         }
 
@@ -65,11 +69,13 @@ namespace Dungeon_Roguelike.Source.UI
         {
             Size = size.ToPoint();
             Rect = new Rectangle(Position, Size);
+            Background.SetSize(Size.ToVector2());
         }
 
         public override void Draw(SpriteBatch spriteBatch)
         {
-            spriteBatch.Draw(_backgroundTexture, Rect, BackgroundColor);
+            //spriteBatch.Draw(_backgroundTexture, Rect, BackgroundColor);
+            Background.Draw(spriteBatch);
             Text.Draw(spriteBatch);
         }
     }

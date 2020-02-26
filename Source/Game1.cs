@@ -49,18 +49,11 @@ namespace Dungeon_Roguelike.Source
             
             
             Text text = new Text(new Point(0,0), "Arial", "Hello World!");
-            Button button = new Button(new Point(0, 100), new Point(100, 25), "pixel", "Save")
-            {
-                Text = {Color = Color.Black}
-            };
-            
-            button.SetPosition(new Point((int)ScreenWidth-button.Size.X-button.Size.Y, button.Size.Y));
 
             Scene levelEditor = new LevelEditor("Level Editor", "tileset", new Point(20, 12), new Point(4, 4));
             Scene testScene = new Scene("Level01", tilemap);
             
             Canvas testCanvas = new Canvas();
-            testCanvas.UIElements.Add(button);
             testCanvas.UIElements.Add(text);
 
             SceneManager.ContentManager = Content;
@@ -69,7 +62,7 @@ namespace Dungeon_Roguelike.Source
             SceneManager.AddScene(new UITest("Test"));
 
             testScene.Canvas = testCanvas;
-            levelEditor.Canvas = testCanvas;
+            //levelEditor.Canvas = testCanvas;
             Input.Initialize();
             base.Initialize();
         }
@@ -78,12 +71,12 @@ namespace Dungeon_Roguelike.Source
         {
             _spriteBatch = new SpriteBatch(GraphicsDevice);
             Helpers.pixel = Content.Load<Texture2D>("pixel");
-
+            Helpers.pixelSprite = new TiledSprite(Helpers.pixel, Point.Zero, 1, 1, 0);
+            
             Cursor.Tex = Content.Load<Texture2D>("test");
 
             TilesetManager.CreateTileset("tileset", Content.Load<Texture2D>("jawbreaker"), 5, 8);
-            SceneManager.LoadScene("Test");
-            Mouse.SetCursor(MouseCursor.FromTexture2D(Content.Load<Texture2D>("test"), 0, 0));
+            SceneManager.LoadScene("Level Editor");
             //_player = new Player(Content.Load<Texture2D>("characters"), new Vector2(100, 100), new Vector2(2, 2), 9, 8, 0);
         }
         
