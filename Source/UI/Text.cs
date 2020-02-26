@@ -29,7 +29,7 @@ namespace Dungeon_Roguelike.Source.UI
         {
         }
 
-        public override void Draw(SpriteBatch spriteBatch)
+        public override void Draw(SpriteBatch spriteBatch, RenderTarget2D uiRenderTarget2D)
         {
             spriteBatch.DrawString(_font, text, Rect.Location.ToVector2(), Color);
         }

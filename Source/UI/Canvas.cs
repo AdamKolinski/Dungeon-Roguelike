@@ -30,11 +30,11 @@ namespace Dungeon_Roguelike.Source.UI
             }
         }
 
-        public void Draw(SpriteBatch spriteBatch)
+        public void Draw(SpriteBatch spriteBatch, RenderTarget2D uiRenderTarget2D)
         {
             foreach (var element in UIElements)
             {
-                element.Draw(spriteBatch);
+                element.Draw(spriteBatch, uiRenderTarget2D);
             }
         }
     }

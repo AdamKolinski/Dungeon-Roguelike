@@ -18,6 +18,7 @@ namespace Dungeon_Roguelike.Source.Sprites
 
         public float TileWidth => _tileWidth;
         public float TileHeight => _tileHeight;
+        public Color TintColor { get; set; } = Color.White;
 
         public TiledSprite(Texture2D texture, Point position, int rows, int columns, int tileIndex) : base(texture, position)
         {
@@ -77,7 +78,7 @@ namespace Dungeon_Roguelike.Source.Sprites
         public override void Draw(SpriteBatch spriteBatch)
         {
             if(!_multiTiled)
-                spriteBatch.Draw(_texture, Rect, new Rectangle((int)(_tileWidth/_scale.X * (TileIndex % Columns)), y: (int)(_tileHeight/_scale.Y *(TileIndex / Columns)), width: (int)(_tileWidth/_scale.X), height: (int)(_tileHeight/_scale.Y)),  Color.White, 0, Vector2.Zero,  s, 0);
+                spriteBatch.Draw(_texture, Rect, new Rectangle((int)(_tileWidth/_scale.X * (TileIndex % Columns)), y: (int)(_tileHeight/_scale.Y *(TileIndex / Columns)), width: (int)(_tileWidth/_scale.X), height: (int)(_tileHeight/_scale.Y)),  TintColor, 0, Vector2.Zero,  s, 0);
 
             if (_multiTiled)
             {
@@ -88,7 +89,7 @@ namespace Dungeon_Roguelike.Source.Sprites
                         Rectangle destinationRect = new Rectangle((int) Position.X + x * (int) TileWidth, (int) Position.Y + y * (int) TileHeight, (int)TileWidth, (int) TileHeight);
                         Rectangle sourceRect = new Rectangle((int)(TileWidth/Scale.X * (TileIndexes[y, x] % Columns)), y: (int)(TileHeight/Scale.Y * (TileIndexes[y, x] / Columns)), width: (int)(TileWidth/Scale.X), height: (int)(TileHeight/Scale.Y));
                         
-                        spriteBatch.Draw(_texture, destinationRect , sourceRect,  Color.White);
+                        spriteBatch.Draw(_texture, destinationRect , sourceRect, TintColor);
                     }
                 }
             }

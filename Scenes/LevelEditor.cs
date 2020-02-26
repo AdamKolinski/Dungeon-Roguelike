@@ -56,7 +56,9 @@ namespace Dungeon_Roguelike.Source
             for (int i = 0; i < tmp; i++)
             {
                 TiledSprite tmpSprite = new TiledSprite(_tilesetTile.Texture, Point.Zero, _tilesetTile.Rows, _tilesetTile.Columns, i);
-                Button tileButton = new Button(new Point(i * 16), new Point(16, 16), tmpSprite, "");
+                Button tileButton = new Button(Point.Zero, Point.Zero, tmpSprite, i.ToString());
+                tileButton.Text.Color = Color.White;
+                tileButton.Parent = _tilesListView;
                 var i1 = i;
                 tileButton.OnMouseClick = delegate { _tilesetIndex = i1; };
                 _tilesListView.UIElements.Add(tileButton);
@@ -215,7 +217,7 @@ namespace Dungeon_Roguelike.Source
                 }
             
             _cursorTile.Draw(spriteBatch);
-            Canvas.Draw(spriteBatch);
+            Canvas.Draw(spriteBatch, uiRenderTarget2D);
         }
     }
 }

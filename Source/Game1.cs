@@ -29,11 +29,16 @@ namespace Dungeon_Roguelike.Source
         {
             _graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
+            _graphics.PreparingDeviceSettings += GraphicsDevicePreparingDeviceSettings;
             IsMouseVisible = false;
             IsFixedTimeStep = false;
             _graphics.PreferredBackBufferWidth = 1080;
             _graphics.PreferredBackBufferHeight = 720;
             _graphics.ApplyChanges();
+        }
+        
+        private void GraphicsDevicePreparingDeviceSettings(object sender, PreparingDeviceSettingsEventArgs e) {
+            e.GraphicsDeviceInformation.PresentationParameters.RenderTargetUsage = RenderTargetUsage.PreserveContents;
         }
         
         
@@ -106,8 +111,8 @@ namespace Dungeon_Roguelike.Source
             
             //_player.Draw(_spriteBatch);
             SceneManager.CurrentScene.Draw(_spriteBatch);
-            
             _spriteBatch.End();
+            
             
             
             SpriteBatch cursorBatch = new SpriteBatch(GraphicsDevice);

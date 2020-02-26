@@ -50,6 +50,7 @@
     <Compile Include="Source\Camera.cs" />
     <Compile Include="Source\Cursor.cs" />
     <Compile Include="Source\Game1.cs" />
+    <Compile Include="Source\Game2.cs" />
     <Compile Include="Source\Helpers.cs" />
     <Compile Include="Source\IDestructible.cs" />
     <Compile Include="Source\InputSystem\Axis.cs" />

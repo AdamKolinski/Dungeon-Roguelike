@@ -111,6 +111,23 @@ namespace Dungeon_Roguelike.Source.InputSystem
 
             return !UIClicked && toReturn;
         }
+
+        public static int MouseScrollTranslation()
+        {
+//            if (_currentMouseState.ScrollWheelValue - _previousMouseState.ScrollWheelValue > 0)
+//                return 1;
+//            if (_currentMouseState.ScrollWheelValue - _previousMouseState.ScrollWheelValue < 0)
+//                return -1;
+//            return 0;
+            return _currentMouseState.ScrollWheelValue - _previousMouseState.ScrollWheelValue;
+        }
+        
+        public static int MouseScrollValue()
+        {
+            return _currentMouseState.ScrollWheelValue;
+        }
+        
+
         public static void Update()
         {
             UIClicked = false;

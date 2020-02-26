@@ -18,10 +18,10 @@ namespace Dungeon_Roguelike.Source.UI
         }
 
         protected bool _isPressed;
-
         public Point Position { get; protected set; }
         public Point Size { get; protected set; }
         public Rectangle Rect { get; protected set; }
+        public UIElement Parent;
 
         public virtual void SetPosition(Point position)
         {
@@ -31,9 +31,21 @@ namespace Dungeon_Roguelike.Source.UI
         
         public bool IsMouseOver()
         {
+            if (Parent != null)
+                return IsMouseOver(Parent);
             Point mousePos = Input.MousePosition;
-            if (mousePos.X >= Position.X && mousePos.X <= Position.X + Size.X &&
-                mousePos.Y >= Position.Y && mousePos.Y <= Position.Y + Size.Y)
+            if (mousePos.X >= Rect.Location.X && mousePos.X <= Rect.Location.X + Rect.Size.X &&
+                mousePos.Y >= Rect.Location.Y && mousePos.Y <= Rect.Location.Y + Rect.Size.Y)
+                return true;
+
+            return false;
+        }
+
+        public bool IsMouseOver(UIElement relativeTo)
+        {
+            Point mousePos = Input.MousePosition;
+            if (mousePos.X >= relativeTo.Position.X + Rect.Location.X && mousePos.X <= relativeTo.Position.X + Rect.Location.X + Rect.Size.X &&
+                mousePos.Y >= relativeTo.Position.Y + Rect.Location.Y && mousePos.Y <= relativeTo.Position.Y + Rect.Location.Y + Rect.Size.Y)
                 return true;
 
             return false;
@@ -71,6 +83,6 @@ namespace Dungeon_Roguelike.Source.UI
 
         public abstract void LoadContent(ContentManager contentManager);
         public abstract void Update(GameTime gameTime);
-        public abstract void Draw(SpriteBatch spriteBatch);
+        public abstract void Draw(SpriteBatch spriteBatch, RenderTarget2D uiRenderTarget2D);
     }
 }

@@ -1,4 +1,5 @@
-﻿using Dungeon_Roguelike.Source.UI;
+﻿using System;
+using Dungeon_Roguelike.Source.UI;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
@@ -31,6 +32,11 @@ namespace Dungeon_Roguelike.Source.Sprites
         {
             _position = position;
             Rect.Location = position;
+        }
+
+        public void SetRelativePosition(Point position, UIElement relativeTo)
+        {
+            
         }
 
         public void SetSize(Vector2 size)
@@ -69,10 +75,20 @@ namespace Dungeon_Roguelike.Source.Sprites
         {
             
         }
-        
+
+        public Point GetPosition()
+        {
+            return Position;
+        }
+
         public virtual void Draw(SpriteBatch spriteBatch)
         {
             spriteBatch.Draw(_texture, Rect, Color.White);
+        }
+
+        public void Draw(SpriteBatch spriteBatch, RenderTarget2D uiRenderTarget2D)
+        {
+            Console.WriteLine("Sprite nie wiem");
         }
 
         public void LoadContent(ContentManager contentManager)
