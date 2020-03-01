@@ -12,6 +12,7 @@ namespace Dungeon_Roguelike.Source.Sprites
         protected Texture2D _texture;
         protected Point _position, _scale;
         public Rectangle Rect;
+        public Color TintColor { get; set; } = Color.White;
 
         public Texture2D Texture
         {
@@ -83,7 +84,7 @@ namespace Dungeon_Roguelike.Source.Sprites
 
         public virtual void Draw(SpriteBatch spriteBatch)
         {
-            spriteBatch.Draw(_texture, Rect, Color.White);
+            spriteBatch.Draw(_texture, Rect, TintColor);
         }
 
         public void Draw(SpriteBatch spriteBatch, RenderTarget2D uiRenderTarget2D)

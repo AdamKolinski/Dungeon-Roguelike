@@ -18,7 +18,7 @@ namespace Dungeon_Roguelike.Source.Sprites
 
         public float TileWidth => _tileWidth;
         public float TileHeight => _tileHeight;
-        public Color TintColor { get; set; } = Color.White;
+
 
         public TiledSprite(Texture2D texture, Point position, int rows, int columns, int tileIndex) : base(texture, position)
         {

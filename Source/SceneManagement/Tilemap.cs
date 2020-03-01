@@ -45,6 +45,7 @@ namespace Dungeon_Roguelike.Source.SceneManagement
 
         public void Draw(SpriteBatch spriteBatch)
         {
+            //Console.WriteLine("Drawing tilemap");
             if (!_generatedPalette)
             {
                 GenerateSpritePalette();

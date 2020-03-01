@@ -13,9 +13,9 @@ namespace Dungeon_Roguelike.Source.UI
         private string _backgroundTextureName;
         public Text Text;
         public string MouseOverText, NormalText;
-        public TiledSprite Background;
+        public Sprite Background;
         
-        public Button(Point position, Point size, TiledSprite background, string text) : base(position, size)
+        public Button(Point position, Point size, Sprite background, string text) : base(position, size)
         {
             Text = new Text(position, "Arial", text);
             NormalText = text;
@@ -88,7 +88,6 @@ namespace Dungeon_Roguelike.Source.UI
 
         public override void Draw(SpriteBatch spriteBatch, RenderTarget2D uiRenderTarget2D)
         {
-            
             Background.Draw(spriteBatch);
             Text.Draw(spriteBatch, uiRenderTarget2D);
         }

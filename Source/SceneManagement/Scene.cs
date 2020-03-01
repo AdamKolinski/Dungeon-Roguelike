@@ -42,7 +42,7 @@ namespace Dungeon_Roguelike.Source.SceneManagement
             spriteBatch.GraphicsDevice.SetRenderTarget(renderTarget);
             spriteBatch.GraphicsDevice.Clear(ClearOptions.Target, Color.Transparent, 1f, 0);
             
-            spriteBatch.Begin();
+            spriteBatch.Begin(samplerState: SamplerState.PointClamp);
             Tilemap?.Draw(spriteBatch);
             spriteBatch.End();
             
@@ -70,6 +70,8 @@ namespace Dungeon_Roguelike.Source.SceneManagement
             spriteBatch.Draw(renderTarget, Vector2.Zero, Color.White);
             spriteBatch.Draw(uiRenderTarget2D, Vector2.Zero, Color.White);
             spriteBatch.End();
+            renderTarget.Dispose();
+            uiRenderTarget2D.Dispose();
         }
     }
 }

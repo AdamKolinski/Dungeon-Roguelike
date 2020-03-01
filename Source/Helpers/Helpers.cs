@@ -1,5 +1,4 @@
 ﻿using System;
-using Dungeon_Roguelike.Source.Sprites;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
@@ -8,7 +7,7 @@ namespace Dungeon_Roguelike.Source
     public static class Helpers
     {
         public static Texture2D pixel;
-        public static TiledSprite pixelSprite;
+        public static PixelSprite pixelSprite;
         
         public static Point ToPoint(this Vector2 vector2)
         {

@@ -66,11 +66,34 @@ namespace Dungeon_Roguelike.Source
 
             Canvas.UIElements.Add(_tilesListView);
             
-            Button button = new Button(new Point(792, 670), new Point(288, 50), Helpers.pixelSprite, "Save")
+            Button button = new Button(new Point(792, 670), new Point(288, 50), Helpers.pixelSprite.Clone(), "Save")
             {
                 Text = {Color = Color.White}
             };
             button.OnMouseClick = SaveTilemap;
+            Canvas.UIElements.Add(button);
+            
+            button = new Button(new Point(767, 0), new Point(25, 25), Helpers.pixelSprite.Clone(), ">")
+            {
+                Text = {Color = Color.White}
+            };
+            button.OnMouseClick = () =>
+            {
+                if (_tilesListView.Position.X < Game1.ScreenWidth)
+                {
+                    _tilesListView.SetPosition(new Point((int)Game1.ScreenWidth, 0));
+                    button.SetPosition(new Point((int)Game1.ScreenWidth-button.Size.X, 0));
+                    button.NormalText = "<";
+                    button.MouseOverText = "<";
+                }
+                else
+                {
+                    _tilesListView.SetPosition(new Point(792, 0));
+                    button.SetPosition(new Point(_tilesListView.Position.X-button.Size.X, 0));
+                    button.NormalText = ">";
+                    button.MouseOverText = ">";
+                }
+            };
             Canvas.UIElements.Add(button);
             
             base.LoadContent(contentManager);
@@ -206,6 +229,7 @@ namespace Dungeon_Roguelike.Source
         
         public override void Draw(SpriteBatch spriteBatch)
         {
+            spriteBatch.Begin(samplerState: SamplerState.PointClamp);
             for (int y = 0; y < _tileset.GetLength(1); y++)
                 for (int x = 0; x < _tileset.GetLength(0); x++)
                 {
@@ -215,9 +239,9 @@ namespace Dungeon_Roguelike.Source
                      _tilesetTile.TileIndex = GetTilesetIndexFromPalette(_tileset[x, y]);
                      _tilesetTile.Draw(spriteBatch);
                 }
-            
             _cursorTile.Draw(spriteBatch);
-            Canvas.Draw(spriteBatch, uiRenderTarget2D);
+            spriteBatch.End();
+            base.Draw(spriteBatch);
         }
     }
 }

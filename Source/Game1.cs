@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
-using Dungeon_Roguelike.Scenes;
 using Dungeon_Roguelike.Source.InputSystem;
 using Dungeon_Roguelike.Source.SceneManagement;
 using Dungeon_Roguelike.Source.Sprites;
@@ -52,22 +51,15 @@ namespace Dungeon_Roguelike.Source
             string tmp = File.ReadAllText("./Content/Tilemap2.json");
             Tilemap tilemap = JsonConvert.DeserializeObject<Tilemap>(tmp);
             
-            
-            Text text = new Text(new Point(0,0), "Arial", "Hello World!");
 
             Scene levelEditor = new LevelEditor("Level Editor", "tileset", new Point(20, 12), new Point(4, 4));
             Scene testScene = new Scene("Level01", tilemap);
-            
-            Canvas testCanvas = new Canvas();
-            testCanvas.UIElements.Add(text);
 
             SceneManager.ContentManager = Content;
             SceneManager.AddScene(levelEditor);
             SceneManager.AddScene(testScene);
-            SceneManager.AddScene(new UITest("Test"));
-
-            testScene.Canvas = testCanvas;
-            //levelEditor.Canvas = testCanvas;
+            SceneManager.AddScene(new UITest("Test", tilemap));
+            
             Input.Initialize();
             base.Initialize();
         }
@@ -76,8 +68,8 @@ namespace Dungeon_Roguelike.Source
         {
             _spriteBatch = new SpriteBatch(GraphicsDevice);
             Helpers.pixel = Content.Load<Texture2D>("pixel");
-            Helpers.pixelSprite = new TiledSprite(Helpers.pixel, Point.Zero, 1, 1, 0);
-            
+            Helpers.pixelSprite = new PixelSprite(Helpers.pixel, Point.Zero);
+
             Cursor.Tex = Content.Load<Texture2D>("test");
 
             TilesetManager.CreateTileset("tileset", Content.Load<Texture2D>("jawbreaker"), 5, 8);
@@ -110,9 +102,9 @@ namespace Dungeon_Roguelike.Source
             
             
             //_player.Draw(_spriteBatch);
-            SceneManager.CurrentScene.Draw(_spriteBatch);
-            _spriteBatch.End();
             
+            _spriteBatch.End();
+            SceneManager.CurrentScene.Draw(_spriteBatch);
             
             
             SpriteBatch cursorBatch = new SpriteBatch(GraphicsDevice);

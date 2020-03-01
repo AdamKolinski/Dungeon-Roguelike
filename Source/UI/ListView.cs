@@ -91,6 +91,7 @@ namespace Dungeon_Roguelike.Source.UI
             spriteBatch.Begin(samplerState: SamplerState.PointClamp);
             spriteBatch.Draw(renderTarget, Rect, Color.White);
             spriteBatch.End();
+            renderTarget.Dispose();
                 
             spriteBatch.Begin();
         }
